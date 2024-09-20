@@ -10,10 +10,10 @@ body{
 .nav-bar{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
     background-color: #f33;
     color: #fff;
-    padding: 10px 20px;
-    align-items: center;
 }
 
 .logo{
@@ -25,7 +25,7 @@ body{
     font-size: 18px;
     text-align: center;
     list-style: none;
-    gap: 15px;
+    gap: 20px;
     margin: auto;
     display: flex;
 }
