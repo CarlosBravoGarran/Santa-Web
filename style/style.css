@@ -43,6 +43,10 @@ body{
     display: flex;
 }
 
+.pages li{
+    padding: 15px;
+}
+
 .pages a{
     color: #fff;
     text-decoration: none;
@@ -150,4 +154,7 @@ body{
 .text{
     font-size: 1.1rem;
     text-align: justify;
+}
+.footer {
+    text-align: center;
 }
