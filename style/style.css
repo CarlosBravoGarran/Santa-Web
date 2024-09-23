@@ -43,6 +43,10 @@ body{
     display: flex;
 }
 
+.pages li{
+    padding: 15px;
+}
+
 .pages a{
     color: #fff;
     text-decoration: none;
