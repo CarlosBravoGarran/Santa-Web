@@ -7,6 +7,8 @@ body{
     box-sizing: border-box;
 }
 
+/* Barra de navegación */
+
 .nav-bar{
     display: flex;
     justify-content: space-between;
@@ -89,6 +91,8 @@ body{
     border: 2px solid #000;
 }
 
+/* Estilo genérico páginas */
+
 .page{
     width: 100%;
     height: 100vh;
@@ -98,7 +102,7 @@ body{
     justify-self: center;
 }
 
-/*Títulos de las páginas*/
+/* Estilo genérico títulos de las páginas */
 
 .title{
     display: flex;
@@ -113,6 +117,8 @@ body{
     margin: 0;
     padding: 10px;
 }
+
+/* Contenidos genéricos páginas */
 
 .content{
     font-size: 1.5rem;
@@ -155,6 +161,47 @@ body{
     font-size: 1.1rem;
     text-align: justify;
 }
+
+/* Tercera página - Cartas */
+
+.content3{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card{
+    float: left;
+    width: 25%;
+    margin: 10px;
+    padding: 0px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    text-align: left;
+    background-color: #e1e4bece;
+    box-shadow: 0 5px 10px 2px #0005;
+}
+
+.card_title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.card_subtitle{
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.card_content{
+    font-size: 1.1rem;
+}
+
+
 .footer {
     text-align: center;
 }
