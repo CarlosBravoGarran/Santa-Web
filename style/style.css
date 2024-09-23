@@ -66,6 +66,8 @@ body{
     border: 2px solid #000;
 }
 
+/* Primera página - Main */
+
 .main{
     width: 100%;
     height: 100vh;
@@ -92,6 +94,8 @@ body{
     justify-self: center;
 }
 
+/*Títulos de las páginas*/
+
 .title{
     display: flex;
     justify-content: center;
@@ -111,4 +115,39 @@ body{
     background-color: #f2f2f2;
     height: 90%;
     margin: 0;
+}
+
+/* Segunda página - Papá Noel */
+
+.content2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+/* Estilo para las columnas */
+.column_galery {
+    background-color: rgb(222, 223, 215);
+    flex: 1;
+    max-width: 500px;
+    max-height: fit-content;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* Ajusta la imagen dentro de su columna */
+.page2 img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Estilo del texto en la columna */
+.text{
+    font-size: 1.1rem;
+    text-align: justify;
 }
