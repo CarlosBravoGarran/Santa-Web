@@ -227,7 +227,7 @@ body{
 	padding: 6px 12px;
 }
 
-textarea {
+.content4 textarea {
 	min-width: 100%;
 	max-width: 100%;
 	min-height: 80px;
