@@ -202,38 +202,78 @@ body{
 }
 
 /* Cuarta página - Enviar Carta */
-.content4 form {
-	background-color: transparent;
-	padding: 40px 0;
-	max-width: 100vh;
-	margin: auto;
-	margin-top: 50px;
-	box-shadow: 0px 0px 55px #0009;
+
+
+.content4 {
+    width: 80%;
+    height: 80%;
+    background-color: #f7edd8; 
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 19px 6px #0000001a;
+    margin: 30px auto;
+    box-sizing: border-box;
 }
 
-.form_input {
-	padding: 12px 20px;
+.content4 h2 {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-size: 24px;
+    align-items: center;
 }
 
-.content4 input, textarea{
-	color: #eee;
-	width: 100%;
-	box-sizing: border-box;
-	border: none;
-	border: 1px solid #666;
-	border-radius: 8px;
-	box-shadow: 0 0 15px #fff2;
-	background-color: transparent;
-	padding: 6px 12px;
+/* Contenedor de la cuadrícula */
+.grid_form{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    align-items: center;
 }
 
-.content4 textarea {
-	min-width: 100%;
-	max-width: 100%;
-	min-height: 80px;
-	resize: none; /*both, vertical, horizontal, none*/
-	font-family: sans-serif; /*Hay que indicar la fuente para que se vea bien*/
+/* Estilo para los campos del formulario */
+.form_field {
+    display: flex;
+    flex-direction: column;
 }
+
+.form_field label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form_field input, textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Campo de texto completo que ocupa ambas columnas */
+.form_message {
+    grid-column: span 2;
+}
+
+/* Botón de envío */
+.send{
+    width: 30%;
+    margin: 10px auto;
+    padding: 10px 15px;
+    border: 2px solid #000;
+    background-color: #f33a;
+    color: #000;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    grid-column: span 2;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+
 /* Quinta página - Juegos */
 
 .content5{
