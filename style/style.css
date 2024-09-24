@@ -216,7 +216,8 @@ body{
 }
 
 .content4 input, textarea{
-	color: #eee;
+	color: #000;
+    font-weight: bold;
 	width: 100%;
 	box-sizing: border-box;
 	border: none;
@@ -227,12 +228,16 @@ body{
 	padding: 6px 12px;
 }
 
-textarea {
+.content4 textarea {
 	min-width: 100%;
 	max-width: 100%;
 	min-height: 80px;
 	resize: none; /*both, vertical, horizontal, none*/
 	font-family: sans-serif; /*Hay que indicar la fuente para que se vea bien*/
+}
+
+#submit_letter {
+    background-color: lightslategrey;
 }
 
 /* Footer */
