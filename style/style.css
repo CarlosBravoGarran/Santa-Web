@@ -13,6 +13,10 @@ body{
     background-color: var(--color-background);
     color: #333;
     box-sizing: border-box;
+    background-image: url('../images/snow_background.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 /* Barra de navegación */
