@@ -1,10 +1,10 @@
-/* COLORS
-.color1 { #f23e02 };
-.color2 { #fef5c8 };
-.color3 { #00988d };
-.color4 { #2c6b74 };
-.color5 { #013750 };
-*/
+:root{
+    --color-primary: #f23e02;
+    --color-secondary: #2c6b74;
+    --color-background: #013750;
+    --color-text: #fef5c8;
+    --color-button: #00988d;
+}
 
 body{
     margin: 0;
