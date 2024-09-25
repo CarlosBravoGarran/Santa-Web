@@ -205,7 +205,7 @@ body{
 .content4 {
     width: 80%;
     height: 80%;
-    background-color: #f7edd8; 
+    background-color: #f7edd8;
     padding: 20px 30px;
     border-radius: 8px;
     box-shadow: 0 0 19px 6px #0000001a;
@@ -305,14 +305,15 @@ button:hover {
     text-align: center;
 }
 
-.column1 a{
+.column1 button{
     font-size: 1.5rem;
     text-decoration: none;
     color: #000;
     border: 2px solid #000;
-    padding: 7px 20px;
+    padding: 2px 20px;
     line-height: 50px;
     border-radius: 5px;
+    margin: 10px;
 }
 
 .column1 a:hover{
@@ -327,8 +328,8 @@ button:hover {
     height: 100%;
     object-fit: contain;
     border-radius: 8px;
+    box-sizing: border-box;
 }
-
 
 #submit_letter {
     background-color: lightslategrey;
