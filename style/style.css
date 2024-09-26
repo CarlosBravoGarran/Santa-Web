@@ -92,10 +92,18 @@ body{
     color: #000;
 }
 
-/* Primera página - Main */
-.main{
+
+/* Estilo genérico páginas */
+.page{
     width: 100%;
     height: 100vh;
+    margin: 0;
+    align-items: center;
+    justify-self: center;
+}
+
+/* Primera página - Main */
+.main{
     text-align: center;
     padding-top: 200px;
     box-sizing: border-box;
@@ -118,14 +126,6 @@ body{
     color: var(--color-text);
 }
 
-/* Estilo genérico páginas */
-.page{
-    width: 100%;
-    height: 100vh;
-    margin: 0;
-    align-items: center;
-    justify-self: center;
-}
 
 /* Estilo genérico títulos de las páginas */
 .title{
