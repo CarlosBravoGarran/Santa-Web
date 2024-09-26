@@ -315,12 +315,11 @@ body{
 
 .column1{
     margin: 2.5% 0;
-    margin-left: 2.5%;
+    margin-left: 5%;
     max-width: 20%;
 }
 
 .column2{
-    width: 70%;
     height: 90%;
     padding: 0;
     background-color: transparent;
@@ -347,9 +346,8 @@ body{
 .column1 button:hover{
     background-color: var(--color-primary);
     color: #fff;
+    cursor: pointer;
 }
-
-/* Ajusta la imagen dentro de su columna */
 
 .page5 img{
     width: 100%;
@@ -357,6 +355,7 @@ body{
     object-fit: contain;
     border-radius: 8px;
     box-sizing: border-box;
+    box-shadow: 0px 5px 20px 2px #fff2;
 }
 
 
