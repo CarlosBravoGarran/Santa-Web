@@ -83,6 +83,11 @@ body{
     cursor: pointer;
 }
 
+.bttn input:hover{
+    background-color: var(--color-text);
+    color: #000;
+}
+
 /* Primera página - Main */
 .main{
     width: 100%;
@@ -101,6 +106,11 @@ body{
     border: 2px solid #000;
     font-weight: bold;
     cursor: pointer;
+    color: var(--color-text);
+}
+
+.main input:hover{
+    background-color: var(--color-primary);
     color: var(--color-text);
 }
 
@@ -190,7 +200,7 @@ body{
     border-radius: 5px;
     text-align: left;
     background-color: var(--color-text);
-    box-shadow: 0 5px 10px 2px #0005;
+    box-shadow: 0 5px 20px 2px #fff2;
 }
 
 .card_title{
@@ -217,7 +227,7 @@ body{
     background-color: var(--color-text);
     padding: 20px 30px;
     border-radius: 8px;
-    box-shadow: 0 0 19px 6px #0000001a;
+    box-shadow: 0 5px 19px 2px #fff2;
     margin: 30px auto;
     box-sizing: border-box;
 }
