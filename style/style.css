@@ -156,14 +156,15 @@ body{
 .content{
     font-size: 1.5rem;
     height: 90%;
+    width: 100%;
     margin: 0;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Segunda página - Papá Noel */
 .content2{
     display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 5%;
 }
 
@@ -195,18 +196,17 @@ body{
 
 /* Tercera página - Cartas */
 .content3{
-    width: 100%;
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    align-items: normal;
 }
 
 .card{
     float: left;
     width: 25%;
+    max-height: 45%;
     margin: 10px;
-    padding: 0px 10px;
-    display: flex;
+    padding: 20px 10px;
     flex-direction: column;
     justify-content: center;
     font-size: 1.5rem;
@@ -214,6 +214,7 @@ body{
     text-align: left;
     background-color: var(--color-text);
     box-shadow: 0 5px 20px 2px #fff2;
+    box-sizing: border-box;
 }
 
 .card_title{
@@ -234,23 +235,31 @@ body{
 /* Cuarta página - Enviar Carta */
 
 
-.content4 {
+/* Formulario */
+.letter_form {
     width: 80%;
-    height: 80%;
+    height: 90%;
+    padding: 30px;
+    box-sizing: border-box;
     background-color: var(--color-text);
-    padding: 30px 30px;
     border-radius: 8px;
     box-shadow: 0 5px 19px 2px #fff2;
     margin: 30px auto;
     box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+
 }
 
 /* Contenedor de la cuadrícula */
 .grid_form{
+    margin: auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     align-items: center;
+    padding: 30px 30px;
+
 }
 
 /* Estilo para los campos del formulario */
@@ -304,7 +313,6 @@ body{
 
 .content5{
     display: flex;
-    align-items: center;
     gap: 5%;
 }
 
@@ -317,8 +325,6 @@ body{
 }
 
 .column1{
-    margin: 2.5% 0;
-    margin-left: 5%;
     max-width: 20%;
 }
 
