@@ -29,6 +29,7 @@ body{
     color: var(--color-text);
     position: fixed;
     top: 0;
+    margin: 0 auto;
 }
 
 .title{
@@ -226,6 +227,7 @@ body{
     font-size: 1.5rem;
     font-weight: bold;
     margin: 0;
+    padding: 3% 0;
 }
 
 .card_subtitle{
@@ -235,6 +237,16 @@ body{
 
 .card_content{
     font-size: 1.1rem;
+}
+
+.card_img{
+    width: 20%;
+    height: auto;
+    margin: 5%;
+    margin-top: 0;
+    float: right;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 /* Cuarta página - Enviar Carta */
