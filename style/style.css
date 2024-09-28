@@ -34,13 +34,12 @@ body{
 .title{
     font-size: 1.3rem;
     font-weight: bold;
-    margin-left: 5%;
+    margin-left: 2.5%;
 }
 
 
 .logo {
     width: 5%;
-    max-width: 20%;
     height: auto;
     display: flex;
     justify-content: left;
@@ -393,13 +392,4 @@ body{
     background-color: var(--color-primary);
     color: var(--color-text);
     padding: 10px 0;
-}
-
-
-/* Diseño responsive */
-
-@media (max-width: 768px){
-    .nav-bar{
-        display: flex;
-    }
 }
