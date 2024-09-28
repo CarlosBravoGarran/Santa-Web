@@ -24,7 +24,6 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
     background-color: var(--color-primary);
     color: var(--color-text);
     position: fixed;
@@ -35,6 +34,7 @@ body{
 .title{
     font-size: 1.3rem;
     font-weight: bold;
+    margin-left: 5%;
 }
 
 
@@ -142,13 +142,14 @@ body{
 
 
 /* Estilo genérico títulos de las páginas */
-.title{
+.titles{
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0;
+    color: var(--color-text);
 }
-.title h2{
+.titles h2{
     font-size: 2rem;
     font-weight: bold;
     color: var(--color-text);
@@ -392,4 +393,13 @@ body{
     background-color: var(--color-primary);
     color: var(--color-text);
     padding: 10px 0;
+}
+
+
+/* Diseño responsive */
+
+@media (max-width: 768px){
+    .nav-bar{
+        display: flex;
+    }
 }
