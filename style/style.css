@@ -1,3 +1,5 @@
+
+/* Paleta de color */
 :root{
     --color-primary: #f23e02;
     --color-secondary: #2c6b74;
@@ -19,8 +21,12 @@ body{
     background-attachment: fixed;
 }
 
+input[type="button"] {
+    cursor: pointer;
+}
+
 /* Barra de navegación */
-.nav-bar{
+.nav_bar{
     width: 100%;
     height: 10vh;
     display: flex;
@@ -34,7 +40,7 @@ body{
     margin: 0 auto;
 }
 
-.title-box {
+.title_box{
     display: flex;
     align-items: center;
     padding: 10px; 
@@ -42,17 +48,17 @@ body{
     margin-left: 2.5%;
 }
 
-.title {
+.title{
     font-size: 1.5rem;
     margin: 0;
 }
 
-.logo {
+.logo{
     width: auto; 
     max-width: 50px; 
     height: auto;
 }
-.pages{
+.page_menu{
     font-size: 18px;
     text-align: center;
     list-style: none;
@@ -62,19 +68,19 @@ body{
     padding: 0;
 }
 
-.pages li{
+.page_menu li{
     padding: 15px;
 }
 
-.pages a{
+.page_menu a{
     color: var(--color-text);
     text-decoration: none;
 }
 
-.pages a:hover{
+.page_menu a:hover{
     text-decoration: underline;}
 
-.bttn{
+.login{
     color: var(--color-text);
     padding: 10px 20px;
     margin: auto 10px;
@@ -82,25 +88,19 @@ body{
     text-decoration: none;
 }
 
-#main_bttn {
-    cursor: pointer;
-}
-
-.bttn input{
+.login input{
     background-color: var(--color-button);
     color: var(--color-text);
     padding: 10px 20px;
     margin: auto 10px;
     border-radius: 5px;
     border: 2px solid #000;
-    cursor: pointer;
 }
 
-.bttn input:hover{
+.login input:hover{
     background-color: var(--color-text);
     color: #000;
 }
-
 
 /* Estilo genérico páginas */
 .page{
@@ -130,7 +130,6 @@ body{
     border: 2px solid #000;
     font-size: 1.3rem;
     font-weight: bold;
-    cursor: pointer;
     color: var(--color-text);
 }
 
@@ -148,10 +147,10 @@ body{
     margin: 0;
     color: var(--color-text);
 }
+
 .titles h2{
     font-size: 2rem;
     font-weight: bold;
-    color: var(--color-text);
     margin: 0;
     margin-top: 2.5vh;
     padding: 10px;
@@ -175,7 +174,7 @@ body{
 }
 
 /* Estilo para las columnas */
-.column_galery{
+.column_p2{
     background-color: #dedfd7;
     flex: 1;
     max-width: 35%;
@@ -186,18 +185,11 @@ body{
     box-sizing: border-box;
 }
 
-/* Ajusta la imagen dentro de su columna */
 .page2 img{
     width: 100%;
     height: auto;
     object-fit: cover;
     border-radius: 8px;
-}
-
-/* Estilo del texto en la columna */
-.text{
-    font-size: 1.1rem;
-    text-align: justify;
 }
 
 /* Tercera página - Cartas */
@@ -207,6 +199,7 @@ body{
     align-items: normal;
 }
 
+/* Estilo para cada carta */
 .card{
     float: left;
     width: 25%;
@@ -279,7 +272,7 @@ body{
 
 }
 
-/* Estilo para los campos del formulario */
+/* Campos del formulario */
 .form_field {
     display: flex;
     flex-direction: column;
@@ -300,7 +293,6 @@ body{
     background-color: #f8ecb1;
 }
 
-/* Campo de texto completo que ocupa ambas columnas */
 .form_message {
     grid-column: span 2;
 }
@@ -323,7 +315,6 @@ body{
 .send:hover {
     background-color: var(--color-primary);
     color: #fff;
-    cursor: pointer;
 }
 
 
@@ -334,7 +325,8 @@ body{
     gap: 5%;
 }
 
-.columns{
+/* Estilo general para las columnas */
+.column_p5{
     background-color: var(--color-text);
     padding: 20px;
     border-radius: 8px;
@@ -342,24 +334,24 @@ body{
     text-align: center;
 }
 
-.column1{
+.column1_p5{
     max-width: 20%;
 }
 
-.column2{
+.column2_p5{
     height: 90%;
     padding: 0;
     background-color: transparent;
     align-content: center;
 }
 
-.column1 ul{
+.column1_p5 ul{
     list-style: none;
     padding: 0;
     text-align: center;
 }
 
-.column1 button{
+.column1_p5 button{
     font-size: 1.5rem;
     text-decoration: none;
     background-color: var(--color-button);
@@ -371,7 +363,7 @@ body{
     margin: 10px;
 }
 
-.column1 button:hover{
+.column1_p5 button:hover{
     background-color: var(--color-primary);
     color: #fff;
     cursor: pointer;
@@ -399,17 +391,17 @@ body{
 /* Estilos para tablet (pantallas entre 600px y 768px) */
 @media only screen and (max-width: 768px) and (min-width: 601px) {
 
-    .nav-bar {
+    .nav_bar{
         flex-direction: column;
         width: 100%;
         height: fit-content;
     }
 
-    .logo {
+    .logo{
         width: 30%;
     }
 
-    .pages {
+    .page_menu{
         margin: 0;
     }
 
@@ -417,20 +409,20 @@ body{
         scroll-margin-top: 0;
     }
 
-    .main {
+    .main{
         font-size: 1.2rem;
     }
 
-    .content2 {
+    .content2{
         flex-direction: column;
         gap: 20px;
     }
 
-    .column_galery {
+    .column_p2{
         max-width: 75%;
     }
 
-    .card {
+    .card{
         width: 45%;
     }
 
@@ -439,40 +431,40 @@ body{
         height: fit-content;
     }
 
-    .grid_form {
+    .grid_form{
         display:inline;
     }
 
-    .form_field {
+    .form_field{
         width: 100%;
         padding: 10px;
     }
 
-    .send {
+    .send{
         width: 50%;
         margin-top: 20px;
         margin-left: 25%
         ;
     }
 
-    .content5 {
+    .content5{
         flex-direction: column;
         height: fit-content;
     }
 
-    .columns {
+    .column_p5{
         margin: 5% auto;
     }
     
-    .column1 {
+    .column1_p5{
         max-width: 100%;
     }
 
-    .column1 ul {
+    .column1_p5 ul {
         display: flex;
     }
 
-    .column2 {
+    .column2_p5 {
         width: 90%;
         height: fit-content;
     }
