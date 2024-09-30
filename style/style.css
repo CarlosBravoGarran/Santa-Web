@@ -28,7 +28,7 @@ input[type="button"] {
 /* Barra de navegación */
 .nav_bar{
     width: 100%;
-    height: 10vh;
+    height: fit-content;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -248,7 +248,7 @@ input[type="button"] {
 /* Formulario */
 .letter_form {
     width: 80%;
-    height: 90%;
+    height: fit-content;
     padding: 30px;
     box-sizing: border-box;
     background-color: var(--color-text);
@@ -269,6 +269,7 @@ input[type="button"] {
     gap: 30px;
     align-items: center;
     padding: 30px 30px;
+    padding-bottom: 0;
 
 }
 
