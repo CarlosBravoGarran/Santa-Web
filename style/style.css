@@ -299,7 +299,7 @@ input[type="button"] {
 
 /* Botón de envío */
 .send{
-    width: 30%;
+    width: fit-content;
     margin: 10px auto;
     padding: 10px 15px;
     border: 2px solid #000;
@@ -391,6 +391,8 @@ input[type="button"] {
 /* Estilos para tablet (pantallas entre 600px y 768px) */
 @media only screen and (max-width: 768px) and (min-width: 601px) {
 
+
+
     .nav_bar{
         flex-direction: column;
         width: 100%;
@@ -407,6 +409,8 @@ input[type="button"] {
 
     .page{
         scroll-margin-top: 0;
+        height: auto;
+        width: 100%;
     }
 
     .main{
@@ -433,6 +437,8 @@ input[type="button"] {
 
     .grid_form{
         display:inline;
+        grid-template-columns: 1fr;
+
     }
 
     .form_field{
@@ -441,10 +447,8 @@ input[type="button"] {
     }
 
     .send{
-        width: 50%;
-        margin-top: 20px;
-        margin-left: 25%
-        ;
+        width: fit-content;
+        margin-left: 25%;
     }
 
     .content5{
