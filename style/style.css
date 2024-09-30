@@ -408,12 +408,12 @@ input[type="button"] {
     border-radius: 20%;
     width: 10%;
     height: auto;
-    margin: 10px;
+    margin: 2%;
 }
 
 .links{
     width: 80%;
-    margin-right: 30%;
+    margin-right: 33%;
 }
 
 
@@ -517,6 +517,14 @@ input[type="button"] {
         width: 90%;
         height: fit-content;
     }
+
+    .social_media{
+        flex-direction: column;
+    }
+
+    .footer_icon{
+        width: 30%;
+    }
 }
 
 /* Estilos para movil (pantallas de hasta 600px) */
@@ -617,4 +625,11 @@ input[type="button"] {
         height: fit-content;
     }
     
+    .social_media{
+        flex-direction: column;
+    }
+
+    .footer_icon{
+        width: 30%;
+    }
 }
