@@ -529,6 +529,10 @@ input[type="button"] {
     .footer_icon{
         width: 30%;
     }
+
+    .links{
+        margin-right: 25%;
+    }
 }
 
 /* Estilos para movil (pantallas de hasta 600px) */
@@ -635,5 +639,9 @@ input[type="button"] {
 
     .footer_icon{
         width: 30%;
+    }
+
+    .links{
+        margin-right: 27%;
     }
 }
