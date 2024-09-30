@@ -43,7 +43,7 @@ input[type="button"] {
 .title_box{
     display: flex;
     align-items: center;
-    padding: 10px; 
+    padding: 10px;
     box-sizing: border-box;
     margin-left: 2.5%;
 }
@@ -54,8 +54,8 @@ input[type="button"] {
 }
 
 .logo{
-    width: auto; 
-    max-width: 50px; 
+    width: auto;
+    max-width: 50px;
     height: auto;
 }
 .page_menu{
@@ -369,7 +369,7 @@ input[type="button"] {
     cursor: pointer;
 }
 
-#game_image{
+#gameImage{
     width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -455,7 +455,7 @@ input[type="button"] {
     .column_p5{
         margin: 5% auto;
     }
-    
+
     .column1_p5{
         max-width: 100%;
     }
