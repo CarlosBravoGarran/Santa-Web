@@ -413,7 +413,7 @@ input[type="button"] {
     }
 
     .page{
-        scroll-margin-top: 0;
+        scroll-margin-top: 20;
         height: auto;
         width: 100%;
     }
@@ -457,6 +457,10 @@ input[type="button"] {
     .send{
         width: fit-content;
         max-width: 100%;
+    }
+
+    .page5{
+        margin: 20vh 0;
     }
 
     .content5{
@@ -508,7 +512,7 @@ input[type="button"] {
     }
 
     .page{
-        scroll-margin-top: 0;
+        scroll-margin-top: 10vh;
         height: auto;
         width: 100%;
     }
@@ -552,6 +556,10 @@ input[type="button"] {
     .send{
         width: fit-content;
         max-width: 100%;
+    }
+
+    .page5{
+        margin: 20vh 0;
     }
 
     .content5{
