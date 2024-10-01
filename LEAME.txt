@@ -6,6 +6,6 @@ En este proyecto, hemos utilizado IA Generativa para las siguientes tareas permi
 2. Creación de texto (cartas) para el contenido de la página web.
 3. Detección de errores puntuales en el código.
 
-Es importante destacar que la IA Generativa no ha sido utilizada para ninguna tarea que no esté incluida en los puntos anteriormente mencionados.
+No hemos utilizado IA Generativa para ninguna tarea que no esté incluida en los puntos anteriormente mencionados.
 
 Carlos Bravo Garrán y Luis Gandarillas Fernández
