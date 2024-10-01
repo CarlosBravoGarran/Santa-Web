@@ -1,0 +1,12 @@
+Uso de IA Generativa en este proyecto:
+
+En este proyecto, hemos utilizado IA Generativa para las siguientes tareas permitidas según el Archivo sobre "Politica de Uso de IA Generativa" publicado en el Aula Global de de la asignatura Interfaces de Usuario en la Universidad Carlos III de Madrid.
+
+1. Búsqueda de soluciones a dudas específicas sobre elementos del lenguaje de programación empleado (HTML y CSS).
+2. Revisión y corrección de errores puntuales en el código.
+3. Generación de imágenes para el contenido visual de la página web.
+4. Creación de texto (cartas) para el contenido de la página web.
+
+Es importante destacar que la IA Generativa no ha sido utilizada para ninguna tarea que no esté incluida en los puntos anteriormente mencionados.
+
+Carlos Bravo Garrán y Luis Gandarillas Fernández
