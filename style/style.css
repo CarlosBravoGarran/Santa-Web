@@ -455,7 +455,7 @@ input[type="submit"] {
     }
 
     .page{
-        scroll-margin-top: 20;
+        scroll-margin-top: 20vh;
         height: auto;
         width: 100%;
     }
@@ -566,7 +566,7 @@ input[type="submit"] {
     }
 
     .page{
-        scroll-margin-top: 10vh;
+        scroll-margin-top: 20vh;
         height: auto;
         width: 100%;
     }
