@@ -582,11 +582,11 @@ input[type="submit"] {
     }
 
     .column_p2{
-        max-width: 75%;
+        max-width: 70%;
     }
 
     .card{
-        width: 45%;
+        width: 70%;
     }
 
     .letter_form{
@@ -629,11 +629,15 @@ input[type="submit"] {
     }
 
     .column1_p5{
-        max-width: 100%;
+        max-width: 80%;
     }
 
     .column1_p5 ul {
         display: flex;
+    }
+
+    .column1_p5 button{
+        font-size: 1rem;
     }
 
     .column2_p5 {
