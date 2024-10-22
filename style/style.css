@@ -260,7 +260,7 @@ h1{
 }
 
 .card_content{
-    font-size: clamp(0.8rem, 1.5vw, 1.3rem);
+    font-size: clamp(0.8rem, 1.5vw, 1.1rem);
 }
 
 .card_img{
