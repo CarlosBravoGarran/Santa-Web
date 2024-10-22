@@ -130,7 +130,6 @@ input[type="submit"] {
 }
 
 /* Primera página - Main */
-
 .page1__title{
     text-align: center;
     font-size: 1.3rem;
@@ -160,7 +159,6 @@ h1{
     background-color: var(--color-primary);
     color: var(--color-text);
 }
-
 
 /* Estilo genérico títulos de las páginas */
 .titles{
@@ -277,7 +275,6 @@ h1{
 
 /* Cuarta página - Enviar Carta */
 
-
 /* Formulario */
 .letter_form {
     width: 80%;
@@ -351,9 +348,7 @@ h1{
     color: #fff;
 }
 
-
 /* Quinta página - Juegos */
-
 .content5{
     justify-content: space-evenly;
 }
@@ -451,7 +446,6 @@ h1{
     margin: 0;
 }
 
-
 .links{
     width: 85%;
     display: flex;
@@ -462,11 +456,8 @@ h1{
 }
 
 
-
 /* Estilos para tablet (pantallas entre 600px y 768px) */
 @media only screen and (max-width: 768px) and (min-width: 601px) {
-
-
 
     .nav_bar{
         flex-direction: column;
@@ -649,7 +640,6 @@ h1{
         align-items: center;
         justify-content: center;
         padding: auto;
-
     }
 
     .form_field{
