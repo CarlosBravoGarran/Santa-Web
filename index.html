@@ -35,10 +35,12 @@
 
     <main>
         <!--Primera página - Inicio-->
-        <section class="page main" id="home">
-            <h1>Sigue a Papá Noel</h1>
-            <h2 id="countdown">85 días 04 h 38 min 13 seg</h2>
-            <input class="disabled" type="button" value="Sigue a Papá Noel" id="main_bttn">
+        <section class="page page1" id="home">
+            <div class="page1__title">
+                <h1>Sigue a Papá Noel</h1>
+                <h2 id="countdown">85 días 04 h 38 min 13 seg</h2>
+                <input class="disabled" type="button" value="Sigue a Papá Noel" id="main_bttn">
+            </div>
         </section>
 
         <!--Segunda página - Papá Noel-->
@@ -47,7 +49,7 @@
                 <h2>Papá Noel</h2>
             </div>
             <div class="content content2">
-                <figure class="column_p2">
+                <figure class="column_p2 santa_img">
                     <img src="images/p2_noel.jpg" alt="Papá Noel">
                 </figure>
                 <div class="column_p2 santa_info">
@@ -159,11 +161,11 @@
             <div class="content content5">
                 <div class="column_p5 column1_p5">
                     <h3>¡Juega con los elfos y gana premios!</h3>
-                    <ul>
-                        <li><button onclick="document.getElementById('game_image').src='images/game1_santa_race.png'" aria-label="Juego 1: Carrera de Santa">Juego 1</button></li>
-                        <li><button onclick="document.getElementById('game_image').src='images/game2_snowman.png'" aria-label="Juego 2: Construye un muñeco de nieve">Juego 2</button></li>
-                        <li><button onclick="document.getElementById('game_image').src='images/game3_village.png'" aria-label="Juego 3: El pueblo navideño">Juego 3</button></li>
-                    </ul>
+                    <div class="game_buttons">
+                        <button onclick="document.getElementById('game_image').src='images/game1_santa_race.png'" aria-label="Juego 1: Carrera de Santa">Juego 1</button>
+                        <button onclick="document.getElementById('game_image').src='images/game2_snowman.png'" aria-label="Juego 2: Construye un muñeco de nieve">Juego 2</button>
+                        <button onclick="document.getElementById('game_image').src='images/game3_village.png'" aria-label="Juego 3: El pueblo navideño">Juego 3</button>
+                    </div>
                 </div>
                 <figure class="column_p5 column2_p5">
                     <img id="game_image" src="images/game_start.jpg" alt="Juegos Navideños">
@@ -179,15 +181,15 @@
             <a href="https://www.x.com/" target="_blank"> <img class="footer_icon" src="images/tw_icon.jpg" alt="Logo de Navidad con Papá Noel"></a>
             <a href="https://www.facebook.com/" target="_blank"> <img class="footer_icon" src="images/fb_icon.jpg" alt="Logo de Navidad con Papá Noel"></a>
         </div>
-        <address class="links">
+        <div class="links">
             <p>Desarrollado por Carlos Bravo y Luis Gandarillas</p>
             <p>
                 Contact us:
                 <a href="https://github.com/carlosbravogarran" target="_blank">@carlosbravogarran</a> |
                 <a href="https://github.com/lgandarillas" target="_blank">@lgandarillas</a>
             </p>
-            <a href="/docs/LICENSE.md" target="_blank">Política de Privacidad</a>
-        </address>
+            <p><a href="/docs/LICENSE.md" target="_blank">Política de Privacidad</a></p>
+        </div>
     </footer>
 </body>
 </html>

@@ -120,22 +120,32 @@ input[type="submit"] {
     width: 100%;
     height: 90vh;
     margin: 0;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-self: center;
+    justify-content: center;
     margin-top: 10vh;
     scroll-margin-top: 10vh;
+    box-sizing: border-box;
 }
 
 /* Primera página - Main */
-.main{
+
+.page1__title{
     text-align: center;
-    padding-top: 200px;
-    box-sizing: border-box;
-    color: var(--color-text);
     font-size: 1.3rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 10px;
+    color: var(--color-text);
 }
 
-.main input{
+h1{
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.page1 input{
     padding: 10px 20px;
     margin: 10px;
     border-radius: 5px;
@@ -146,7 +156,7 @@ input[type="submit"] {
     color: var(--color-text);
 }
 
-.main input:hover{
+.page1 input:hover{
     background-color: var(--color-primary);
     color: var(--color-text);
 }
@@ -172,25 +182,24 @@ input[type="submit"] {
 
 /* Contenidos genéricos páginas */
 .content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1.5rem;
     height: 90%;
     width: 100%;
     margin: 0;
-    justify-content: center;
-    align-items: center;
 }
 
 /* Segunda página - Papá Noel */
 .content2{
-    display: flex;
-    gap: 5%;
+    justify-content: space-evenly;
 }
 
 /* Estilo para las columnas */
 .column_p2{
     background-color: #dedfd7;
-    flex: 1;
-    max-width: 35%;
+    max-width: 45%;
     max-height: fit-content;
     background-color: var(--color-text);
     padding: 20px;
@@ -198,20 +207,28 @@ input[type="submit"] {
     box-sizing: border-box;
 }
 
+.santa_img{
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 20px;
+}
+
 .page2 img{
     width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: 8px;
 }
 
 .santa_info{
     max-height: 100%;
+    margin: 0 20px;
 }
 
 /* Tercera página - Cartas */
 .content3{
-    display: flex;
     flex-wrap: wrap;
     align-items: normal;
 }
@@ -225,7 +242,6 @@ input[type="submit"] {
     padding: 20px 10px;
     flex-direction: column;
     justify-content: center;
-    font-size: 1.5rem;
     border-radius: 5px;
     text-align: left;
     background-color: var(--color-text);
@@ -246,7 +262,7 @@ input[type="submit"] {
 }
 
 .card_content{
-    font-size: 1.1rem;
+    font-size: clamp(0.8rem, 1.5vw, 1.3rem);
 }
 
 .card_img{
@@ -265,16 +281,12 @@ input[type="submit"] {
 /* Formulario */
 .letter_form {
     width: 80%;
-    height: fit-content;
     padding: 30px;
-    box-sizing: border-box;
     background-color: var(--color-text);
     border-radius: 8px;
     box-shadow: 0 5px 19px 2px #fff2;
     margin: 30px auto;
     box-sizing: border-box;
-    align-items: center;
-    justify-content: center;
 }
 
 /* Contenedor de la cuadrícula */
@@ -286,7 +298,6 @@ input[type="submit"] {
     align-items: center;
     padding: 30px 30px;
     padding-bottom: 0;
-
 }
 
 /* Campos del formulario */
@@ -315,18 +326,24 @@ input[type="submit"] {
 }
 
 /* Botón de envío */
-.send{
-    width: fit-content;
+.send {
+    width: 100%; 
+    max-width: 300px;
     margin: 10px auto;
     padding: 10px 15px;
     border: 2px solid #000;
     background-color: var(--color-button);
     color: #000;
-    font-size: 16px;
+    font-size: 1rem;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
     grid-column: span 2;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 .send:hover {
@@ -338,8 +355,7 @@ input[type="submit"] {
 /* Quinta página - Juegos */
 
 .content5{
-    display: flex;
-    gap: 5%;
+    justify-content: space-evenly;
 }
 
 /* Estilo general para las columnas */
@@ -352,7 +368,13 @@ input[type="submit"] {
 }
 
 .column1_p5{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     max-width: 20%;
+    margin: 0 20px;
+    font-size: clamp(0.9rem, 1.5vw, 1.6rem);
 }
 
 .column2_p5{
@@ -360,24 +382,26 @@ input[type="submit"] {
     padding: 0;
     background-color: transparent;
     align-content: center;
+    margin: 0 20px;
 }
 
-.column1_p5 ul{
-    list-style: none;
-    padding: 0;
-    text-align: center;
+.column1_p5 h3{
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 10px;
 }
 
 .column1_p5 button{
-    font-size: 1.5rem;
-    text-decoration: none;
+    width: 75%;
+    max-width: 140px;
     background-color: var(--color-button);
     color: #000;
     border: 2px solid #000;
-    padding: 2px 20px;
-    line-height: 50px;
     border-radius: 5px;
+    padding: 15px 0;
     margin: 10px;
+    font-size: clamp(0.7rem, 1.5vw, 1.6rem);
+    text-align: center;
 }
 
 .column1_p5 button:hover{
@@ -398,26 +422,20 @@ input[type="submit"] {
 
 /* Footer */
 .footer{
+    display: flex;
+    justify-content: space-between;
     text-align: center;
     background-color: var(--color-primary);
     color: var(--color-text);
     padding: 10px 0;
-    display: flex;
 }
 
-
 .social_media{
+    display: flex;
+    justify-content: center;
     width: fit-content;
     height: auto;
     margin: auto;
-    margin-left: 5%;
-    display: flex;
-}
-
-.social_media a{
-    display:contents;
-    padding: 0;
-    margin: 0;
 }
 
 .footer_icon{
@@ -427,9 +445,20 @@ input[type="submit"] {
     margin: 2%;
 }
 
+.social_media a{
+    display:contents;
+    padding: 0;
+    margin: 0;
+}
+
+
 .links{
-    width: 80%;
-    margin-right: 30%;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 25%;
 }
 
 
@@ -466,7 +495,7 @@ input[type="submit"] {
         width: 100%;
     }
 
-    .main{
+    .page1{
         font-size: 1.2rem;
         height: 80vh;
     }
@@ -519,16 +548,26 @@ input[type="submit"] {
     .column_p5{
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         align-items: center;
-        margin: 5% auto;
+        margin: 20px auto;
     }
 
     .column1_p5{
         max-width: 100%;
     }
 
-    .column1_p5 ul {
+    .game_buttons{
+        width: 100%;
         display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .column1_p5 button{
+        margin: 0;
+        width: 30%;
+        font-size: clamp(0.7rem, 1.5vw, 1.6rem);
     }
 
     .column2_p5 {
@@ -538,6 +577,7 @@ input[type="submit"] {
 
     .social_media{
         flex-direction: column;
+        margin-left: 5%;
     }
 
     .footer_icon{
@@ -545,7 +585,7 @@ input[type="submit"] {
     }
 
     .links{
-        margin-right: 25%;
+        margin-right: 10%;
     }
 }
 
@@ -580,7 +620,7 @@ input[type="submit"] {
         width: 100%;
     }
 
-    .main{
+    .page1{
         font-size: 1.2rem;
         height: 80vh;
     }
@@ -633,20 +673,28 @@ input[type="submit"] {
     .column_p5{
         display: flex;
         flex-direction: column;
+        justify-content: space-evenly;
         align-items: center;
-        margin: 5% auto;
+        margin: 20px auto;
     }
 
     .column1_p5{
         max-width: 80%;
     }
 
-    .column1_p5 ul {
+    .game_buttons{
+        width: 100%;
         display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
     }
 
     .column1_p5 button{
-        font-size: 1rem;
+        margin: 0;
+        padding: 15px 0;
+        width: 30%;
+        font-size: clamp(0.7rem, 1.5vw, 1.6rem);
+        text-align: center;
     }
 
     .column2_p5 {
@@ -656,6 +704,7 @@ input[type="submit"] {
 
     .social_media{
         flex-direction: column;
+        margin-left: 5%;
     }
 
     .footer_icon{
@@ -663,6 +712,6 @@ input[type="submit"] {
     }
 
     .links{
-        margin-right: 27%;
+        margin-right: 10%;
     }
 }
