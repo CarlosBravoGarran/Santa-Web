@@ -4,7 +4,7 @@ selectElement.insertAdjacentHTML('afterbegin', '<option value="" selected hidden
 
 
 // Abrir el pop-up de registro
-document.querySelector('.login input[value="Registrarse"]').addEventListener('click', function() {
+document.querySelector('.access input[value="Registrarse"]').addEventListener('click', function() {
     document.querySelector('.pop-up.register').style.display = 'flex';
 });
 
@@ -19,7 +19,7 @@ document.querySelector('.register__buttons input[value="Cancelar"]').addEventLis
 document.addEventListener('click', function(event) {
     const popUp = document.querySelector('.pop-up.register');
     const form = document.querySelector('.register__form');
-    if (popUp.style.display === 'flex' && !form.contains(event.target) && !event.target.closest('.login input[value="Registrarse"]') && confirm('¿Está seguro de que desea cancelar el registro?')) {
+    if (popUp.style.display === 'flex' && !form.contains(event.target) && !event.target.closest('.access input[value="Registrarse"]') && confirm('¿Está seguro de que desea cancelar el registro?')) {
         popUp.style.display = 'none';
     }
 });
@@ -62,10 +62,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Función mostrar mensaje de registro temporal
-    function showSuccessMessage() {
+    function showSuccessRegister() {
         const message = document.createElement('div');
         message.classList.add('success-message');
-        message.textContent = 'Te has registrado correctamente.';
+        message.textContent = 'Se ha registrado correctamente.';
         document.body.appendChild(message);
 
         setTimeout(() => {
@@ -181,12 +181,78 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         setCookie('userData', userData, 1);                                 // Guardar valores en una cookie
-
         document.querySelector('.pop-up.register').style.display = 'none';  // Cerrar la ventana del formulario tras la confirmación
-
-        showSuccessMessage();                                               // Mostrar mensaje de éxito
-
+        showSuccessRegister();                                               // Mostrar mensaje de éxito
         document.querySelector('.register__form').reset();                  // Limpiar el formulario
         childrenContainer.innerHTML = '';                                   // Limpiar los campos de los hijos
     });
+});
+
+
+//-----------------------------//
+
+// Abrir el pop-up de iniciar sesión
+document.querySelector('.access input[value="Iniciar Sesión"]').addEventListener('click', function() {
+    document.querySelector('.pop-up.login').style.display = 'flex';
+});
+
+// Cerrar el pop-up al hacer clic en "Cancelar"
+document.querySelector('.login__buttons input[value="Cancelar"]').addEventListener('click', function() {
+    document.querySelector('.pop-up.login').style.display = 'none';
+});
+
+// Cerrar el pop-up al hacer clic fuera del pop-up
+document.addEventListener('click', function(event) {
+    const popUp = document.querySelector('.pop-up.login');
+    const form = document.querySelector('.login__form');
+    if (popUp.style.display === 'flex' && !form.contains(event.target) && !event.target.closest('.access input[value="Iniciar Sesión"]')){
+        popUp.style.display = 'none';
+    }
+});
+
+// Función para obtener datos de una cookie
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return JSON.parse(parts.pop().split(';').shift());
+    return null;
+}
+
+// Función mostrar mensaje de registro temporal
+function showSuccessLogin() {
+    const message = document.createElement('div');
+    message.classList.add('success-message');
+    message.textContent = 'Ha iniciado sesión correctamente.';
+    document.body.appendChild(message);
+
+    setTimeout(() => {
+        message.remove();
+    }, 3000); // 3000 ms
+}
+
+// Manejar el envío del formulario de inicio de sesión
+document.querySelector('.login__form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evitar que el formulario recargue la página
+
+    // Obtener los valores de los campos
+    const username = document.getElementById('login_username').value;
+    const password = document.getElementById('login_password').value;
+
+    // Intentar obtener los datos de usuario guardados en la cookie
+    const userData = getCookie('userData');
+
+    // Si no hay datos guardados
+    if (!userData) {
+        alert('No existen usuarios registrados. Por favor, regístrese primero.');
+        return;
+    }
+
+    // Comprobar si el usuario introducido existe y la contraseña es correcta
+    if (userData.username === username && userData.password === password) {
+        document.querySelector('.pop-up.login').style.display = 'none';  // Cerrar el pop-up después de iniciar sesión
+        showSuccessLogin();                                              // Mostrar mensaje de éxito
+        document.querySelector('.login__form').reset();                  // Limpiar el formulario
+    } else {
+        alert('Usuario o contraseña incorrectos. Inténtelo de nuevo.');
+    }
 });

@@ -92,7 +92,7 @@ input[type="submit"] {
 .page_menu a:hover{
     text-decoration: underline;}
 
-.login{
+.access{
     display: flex;
     color: var(--color-text);
     border-radius: 5px;
@@ -103,7 +103,7 @@ input[type="submit"] {
     padding: 10px;
 }
 
-.login input{
+.access input{
     width: 42%;
     max-width: 150px;
     min-width: 130px;
@@ -115,7 +115,7 @@ input[type="submit"] {
     border: 2px solid #000;
 }
 
-.login input:hover{
+.access input:hover{
     background-color: var(--color-text);
     color: #000;
 }

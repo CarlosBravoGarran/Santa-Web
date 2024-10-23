@@ -28,7 +28,7 @@
                 <li><a href="#send_letter">Enviar Carta</a></li>
                 <li><a href="#games">Juegos</a></li>
             </ul>
-            <div class="login">
+            <div class="access">
                 <input type="button" value="Iniciar Sesión">
                 <input type="button" value="Registrarse">
             </div>
@@ -82,6 +82,25 @@
                         <input type="submit" value="Aceptar">
                         <input type="reset" value="Cancelar">
                         <input type="button" value="Limpiar Datos">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="pop-up login">
+            <div class="login__content">
+                <h2>Iniciar Sesión</h2>
+                <form class="login__form">
+                    <div class="login__field">
+                        <label for="login_username">Nombre de usuario</label>
+                        <input type="text" id="login_username" name="username" placeholder="Ingresa tu nombre de usuario" required>
+                    </div>
+                    <div class="login__field">
+                        <label for="login_password">Contraseña</label>
+                        <input type="password" id="login_password" name="password" placeholder="Ingresa tu contraseña" required>
+                    </div>
+                    <div class="login__buttons">
+                        <input type="submit" value="Aceptar">
+                        <input type="reset" value="Cancelar">
                     </div>
                 </form>
             </div>
