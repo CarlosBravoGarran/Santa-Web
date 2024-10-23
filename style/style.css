@@ -8,10 +8,15 @@
     --color-button: #00988d;
 }
 
+*{
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
 body{
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: sans-serif, 'Merienda';
     background-color: var(--color-background);
     color: #333;
     box-sizing: border-box;
@@ -260,7 +265,7 @@ h1{
 }
 
 .card_content{
-    font-size: clamp(0.8rem, 1.5vw, 1.3rem);
+    font-size: clamp(0.8rem, 1.5vw, 1.1rem);
 }
 
 .card_img{
@@ -271,6 +276,10 @@ h1{
     float: right;
     object-fit: cover;
     border-radius: 8px;
+}
+
+.card:hover {
+    box-shadow: 0 0 10px 2px #fff6;
 }
 
 /* Cuarta página - Enviar Carta */

@@ -1,0 +1,49 @@
+
+@font-face {
+    font-family: 'Merienda';
+    src: url('/static/Merienda-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merienda';
+    src: url('/static/Merienda-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merienda';
+    src: url('/static/Merienda-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merienda';
+    src: url('/static/Merienda-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merienda';
+    src: url('/static/Merienda-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merienda';
+    src: url('/static/Merienda-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merienda';
+    src: url('/static/Merienda-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
