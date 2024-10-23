@@ -8,6 +8,11 @@
     --color-button: #00988d;
 }
 
+*{
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -271,6 +276,10 @@ h1{
     float: right;
     object-fit: cover;
     border-radius: 8px;
+}
+
+.card:hover {
+    box-shadow: 0 0 10px 2px #fff6;
 }
 
 /* Cuarta página - Enviar Carta */
