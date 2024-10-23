@@ -10,6 +10,7 @@
     <title>Navidad con Papá Noel</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/fonts.css">
+    <link rel="stylesheet" href="style/pop-up.css"> 
     <link rel="icon" href="images/icon.png" type="image/png">
 </head>
 <body>
@@ -28,13 +29,63 @@
                 <li><a href="#games">Juegos</a></li>
             </ul>
             <div class="login">
-                <input class="disabled" type="button" value="Iniciar Sesión">
-                <input class="disabled" type="button" value="Registrarse">
+                <input type="button" value="Iniciar Sesión">
+                <input type="button" value="Registrarse">
             </div>
         </nav>
     </header>
 
     <main>
+        <div class="pop-up register">
+            <div class="register__content">
+                <h2 class="register__title">Registro</h2>
+                <form class="register__form">
+                    <div class="register__field">
+                        <label for="user_name">Nombre</label>
+                        <input type="text" id="user_name" name="name" placeholder="Ingresa tu nombre">
+                    </div>
+                    <div class="register__field">
+                        <label for="user_password">Contraseña</label>
+                        <input type="password" id="user_password" name="password" placeholder="Ingresa tu contraseña">
+                    </div>
+                    <div class="register__field">
+                        <label for="user_confirm_password">Confirmar Contraseña</label>
+                        <input type="password" id="user_confirm_password" name="confirm_password" placeholder="Confirma tu contraseña">
+                    </div>
+                    <div class="register__field">
+                        <label for="user_email">Email</label>
+                        <input type="email" id="user_email" name="email" placeholder="Ingresa tu email">
+                    </div>
+                    <div class="register__field">
+                        <label for="user_city">Ciudad</label>
+                        <input type="city" id="user_city" name="city" placeholder="Ingresa tu ciudad">
+                    </div>
+                    <div class="register__field">
+                        <label for="user_country">País</label>
+                        <input type="text" id="user_country" name="country" placeholder="Ingresa tu país">
+                    </div>
+                    <div class="register__field">
+                        <label for="user_gender">Género</label>
+                        <select id="user_gender" name="gender">
+                            <option value="masc">Masculino</option>
+                            <option value="fem">Femenino</option>
+                            <option value="otro">Otro</option>
+                            <option value="pref_no_decir">Prefiero no decir</option>
+                        </select>
+                    </div>
+                    <div class="register__field">
+                        <label for="user_children">¿Cuántos hijos tienes?</label>
+                        <input type="number" id="user_children" name="children" placeholder="Ingresa el número de hijos">
+                    </div>
+                    <div id="child_form"></div>
+                    <div class="register__buttons">
+                        <input type="submit" value="Aceptar">
+                        <input type="reset" value="Cancelar">
+                        <input type="button" value="Limpiar Datos">
+                    </div>
+                </form>
+            </div>
+        </div>
         <!--Primera página - Inicio-->
         <section class="page page1" id="home">
             <div class="page1__title">
@@ -193,5 +244,6 @@
         </div>
     </footer>
     <script src="script/countdown.js"></script>
+    <script src="script/pop-up.js"></script>
 </body>
 </html>
