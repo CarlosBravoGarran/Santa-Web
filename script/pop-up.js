@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(() => {
             message.remove();
-        }, 3000); // 3000 ms
+        }, 2000); // 2000 ms
     }
 
     // Función para establecer una cookie
@@ -226,7 +226,7 @@ function showSuccessLogin() {
 
     setTimeout(() => {
         message.remove();
-    }, 3000); // 3000 ms
+    }, 2000); // 2000 ms
 }
 
 
@@ -234,8 +234,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Elementos de la barra de navegación
     const loginButtons = document.querySelector('.access');             // Contenedor de los botones de login y registro
     const profileContainer = document.querySelector('.user_profile');   // Contenedor del perfil del usuario
-    const profileIcon = document.querySelector('.profile__icon');        // Ícono de perfil
-    const profileMenu = document.querySelector('.profile__menu');        // Menú del perfil
+    const profileIcon = document.querySelector('.profile__icon');       // Ícono de perfil
+    const profileMenu = document.querySelector('.profile__menu');       // Menú del perfil
 
     // Manejar el envío del formulario de inicio de sesión
     document.querySelector('.login__form').addEventListener('submit', function(event) {
@@ -256,11 +256,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Comprobar si el usuario introducido existe y la contraseña es correcta
         if (userData.username === username && userData.password === password) {
-            document.querySelector('.pop-up.login').style.display = 'none';  // Cerrar el pop-up de login
-            showSuccessLogin();  // Mostrar mensaje de éxito
-            loginButtons.style.display = 'none';  // Ocultar los botones de "Iniciar Sesión" y "Registrarse"
-            profileContainer.style.display = 'flex';  // Mostrar el ícono de perfil
-            document.querySelector('.login__form').reset();  // Limpiar el formulario
+            document.querySelector('.pop-up.login').style.display = 'none';     // Cerrar el pop-up de login
+            showSuccessLogin();                                                 // Mostrar mensaje de éxito
+            loginButtons.style.display = 'none';                                // Ocultar los botones de "Iniciar Sesión" y "Registrarse"
+            profileContainer.style.display = 'flex';                            // Mostrar el ícono de perfil
+            document.querySelector('.login__form').reset();                     // Limpiar el formulario
         } else {
             alert('Usuario o contraseña incorrectos. Inténtelo de nuevo.');
         }
@@ -273,11 +273,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Cerrar sesión
     document.getElementById('logout_button').addEventListener('click', function () {
-        profileContainer.style.display = 'none';  // Ocultar el perfil
-        loginButtons.style.display = 'flex';  // Volver a mostrar los botones de login y registro
-        profileMenu.style.display = 'none';  // Ocultar el menú del perfil
-        alert('Has cerrado sesión correctamente.');
+        // Preguntar al usuario si desea cerrar sesión
+        const confirmLogout = confirm('¿Está seguro de que desea cerrar sesión?');
+    
+        if (confirmLogout) {
+            profileContainer.style.display = 'none';            // Ocultar el perfil
+            loginButtons.style.display = 'flex';                // Volver a mostrar los botones de login y registro
+            profileMenu.style.display = 'none';                 // Ocultar el menú del perfil
+        }
     });
+    
 
     // Cerrar el menú si se hace clic fuera de él
     document.addEventListener('click', function(event) {

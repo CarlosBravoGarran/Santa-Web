@@ -111,7 +111,7 @@
     font-size: clamp(0.7rem, 1.5vw, 1.1rem);
     z-index: 1000;
     opacity: 0;
-    animation: fadeInOut 3s forwards;
+    animation: fadeInOut 2s forwards;
 }
 
 @keyframes fadeInOut {

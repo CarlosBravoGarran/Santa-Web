@@ -74,7 +74,7 @@ input[type="submit"] {
 }
 .page_menu{
     display: flex;
-    font-size: 18px;
+    font-size: 20px;
     justify-content: space-evenly;
     text-align: center;
     list-style: none;
@@ -91,7 +91,8 @@ input[type="submit"] {
 }
 
 .page_menu a:hover{
-    text-decoration: underline;}
+    text-decoration: underline;
+}
 
 .access{
     display: flex;
