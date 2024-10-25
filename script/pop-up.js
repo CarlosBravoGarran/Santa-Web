@@ -188,7 +188,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-//-----------------------------//
+
+
+//--------------LOG IN---------------//
 
 // Abrir el pop-up de iniciar sesión
 document.querySelector('.access input[value="Iniciar Sesión"]').addEventListener('click', function() {
@@ -230,6 +232,8 @@ function showSuccessLogin() {
 }
 
 
+/*------------------------MENU--------------------- */
+
 document.addEventListener('DOMContentLoaded', function () {
     // Elementos de la barra de navegación
     const loginButtons = document.querySelector('.access');             // Contenedor de los botones de login y registro
@@ -266,9 +270,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Mostrar el menú del perfil al hacer clic en el ícono
+    // Mostrar/ocultar el menú del perfil al hacer clic en el ícono usando toggle de clase
     profileIcon.addEventListener('click', function() {
-        profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';  // Alternar visibilidad
+        profileMenu.classList.toggle('menu__hidden');  // Alternar la clase 'hidden' para mostrar/ocultar el menú
     });
 
     // Cerrar sesión
@@ -279,15 +283,14 @@ document.addEventListener('DOMContentLoaded', function () {
         if (confirmLogout) {
             profileContainer.style.display = 'none';            // Ocultar el perfil
             loginButtons.style.display = 'flex';                // Volver a mostrar los botones de login y registro
-            profileMenu.style.display = 'none';                 // Ocultar el menú del perfil
+            profileMenu.classList.add('menu__hidden');          // Ocultar menú
         }
     });
     
-
     // Cerrar el menú si se hace clic fuera de él
     document.addEventListener('click', function(event) {
         if (!profileContainer.contains(event.target)) {
-            profileMenu.style.display = 'none';
+            profileMenu.classList.add('menu__hidden');
         }
     });
 });
