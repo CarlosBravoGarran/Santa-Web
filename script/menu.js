@@ -31,7 +31,7 @@ function showSuccessLogin() {
 
     setTimeout(() => {
         message.remove();
-    }, 2000); // 2000 ms
+    }, 1500); // 1500 ms
 }
 
 // Función para iniciar sesión

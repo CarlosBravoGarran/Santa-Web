@@ -31,7 +31,7 @@ function showSuccessRegister() {
 
     setTimeout(() => {
         message.remove();
-    }, 2000);
+    }, 1500); // 1500 ms
 }
 
 // Función para crear los campos adicionales para los hijos
