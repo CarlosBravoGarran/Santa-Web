@@ -5,22 +5,22 @@ selectElement.insertAdjacentHTML('afterbegin', '<option value="" selected hidden
 
 // Abrir el pop-up de registro
 document.querySelector('.access input[value="Registrarse"]').addEventListener('click', function() {
-    document.querySelector('.pop-up.register').style.display = 'flex';
+    document.querySelector('.register').style.display = 'flex';
 });
 
 // Cerrar el pop-up cuando se haga clic en "Cancelar"
 document.querySelector('.register__buttons input[value="Cancelar"]').addEventListener('click', function() {
     if (confirm('¿Está seguro de que desea cancelar el registro?')) {
-        document.querySelector('.pop-up.register').style.display = 'none';
+        document.querySelector('.register').style.display = 'none';
     }
 });
 
 // Cerrar el pop-up cuando se haga clic fuera del pop-up
 document.addEventListener('click', function(event) {
-    const popUp = document.querySelector('.pop-up.register');
+    const register = document.querySelector('.register');
     const form = document.querySelector('.register__form');
-    if (popUp.style.display === 'flex' && !form.contains(event.target) && !event.target.closest('.access input[value="Registrarse"]') && confirm('¿Está seguro de que desea cancelar el registro?')) {
-        popUp.style.display = 'none';
+    if (register.style.display === 'flex' && !form.contains(event.target) && !event.target.closest('.access input[value="Registrarse"]') && confirm('¿Está seguro de que desea cancelar el registro?')) {
+        register.style.display = 'none';
     }
 });
 
@@ -179,35 +179,33 @@ document.addEventListener('DOMContentLoaded', function () {
             children: childrenList
         };
 
-        setCookie('userData', userData, 1);                                 // Guardar valores en una cookie
-        document.querySelector('.pop-up.register').style.display = 'none';  // Cerrar la ventana del formulario tras la confirmación
-        showSuccessRegister();                                               // Mostrar mensaje de éxito
-        document.querySelector('.register__form').reset();                  // Limpiar el formulario
-        childrenContainer.innerHTML = '';                                   // Limpiar los campos de los hijos
+        setCookie('userData', userData, 1);                             // Guardar valores en una cookie
+        document.querySelector('.register').style.display = 'none';     // Cerrar la ventana del formulario tras la confirmación
+        showSuccessRegister();                                          // Mostrar mensaje de éxito
+        document.querySelector('.register__form').reset();              // Limpiar el formulario
+        childrenContainer.innerHTML = '';                               // Limpiar los campos de los hijos
     });
 });
-
-
 
 
 //--------------LOG IN---------------//
 
 // Abrir el pop-up de iniciar sesión
 document.querySelector('.access input[value="Iniciar Sesión"]').addEventListener('click', function() {
-    document.querySelector('.pop-up.login').style.display = 'flex';
+    document.querySelector('.login').style.display = 'flex';
 });
 
 // Cerrar el pop-up al hacer clic en "Cancelar"
 document.querySelector('.login__buttons input[value="Cancelar"]').addEventListener('click', function() {
-    document.querySelector('.pop-up.login').style.display = 'none';
+    document.querySelector('.login').style.display = 'none';
 });
 
 // Cerrar el pop-up al hacer clic fuera del pop-up
 document.addEventListener('click', function(event) {
-    const popUp = document.querySelector('.pop-up.login');
+    const logIn = document.querySelector('.login');
     const form = document.querySelector('.login__form');
-    if (popUp.style.display === 'flex' && !form.contains(event.target) && !event.target.closest('.access input[value="Iniciar Sesión"]')){
-        popUp.style.display = 'none';
+    if (logIn.style.display === 'flex' && !form.contains(event.target) && !event.target.closest('.access input[value="Iniciar Sesión"]')){
+        logIn.style.display = 'none';
     }
 });
 
