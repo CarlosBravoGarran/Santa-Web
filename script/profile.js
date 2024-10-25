@@ -1,7 +1,36 @@
 
+// Función para obtener una cookie
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        try {
+            return JSON.parse(parts.pop().split(';').shift());
+        } catch (error) {
+            console.error("Error parsing JSON from cookie:", error);
+            return null;
+        }
+    }
+    return null;
+}
+
+// Función para establecer una cookie
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + JSON.stringify(value) + ";" + expires + ";path=/";
+}
+
+// Función para eliminar una cookie
+function deleteCookie(name) {
+    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
 
-    document.cookie = "userSession=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    deleteCookie('userSession'); // Eliminar la cookie de sesión al cargar la página
 
 
     // Elementos para el pop-up de perfil
@@ -16,34 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const emailDisplay = document.getElementById('email_display');
     const cityDisplay = document.getElementById('city_display');
     const countryDisplay = document.getElementById('country_display');
-
-    // Función para obtener una cookie
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) {
-            try {
-                return JSON.parse(parts.pop().split(';').shift());
-            } catch (error) {
-                console.error("Error parsing JSON from cookie:", error);
-                return null;
-            }
-        }
-        return null;
-    }
-
-    // Función para establecer una cookie
-    function setCookie(name, value, days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        const expires = "expires=" + date.toUTCString();
-        document.cookie = name + "=" + JSON.stringify(value) + ";" + expires + ";path=/";
-    }
-
-    // Función para eliminar una cookie
-    function deleteCookie(name) {
-        document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    }
 
     // Mostrar el pop-up de perfil y cargar datos al hacer clic en el botón "Mi Perfil"
     myProfileButton.addEventListener('click', function () {

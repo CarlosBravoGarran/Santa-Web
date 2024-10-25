@@ -1,4 +1,45 @@
 
+// Función para obtener una cookie
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        try {
+            return JSON.parse(parts.pop().split(';').shift());
+        } catch (error) {
+            console.error("Error parsing JSON from cookie:", error);
+            return null;
+        }
+    }
+    return null;
+}
+
+// Función para establecer una cookie
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + JSON.stringify(value) + ";" + expires + ";path=/";
+}
+
+// Función para mostrar mensaje de inicio de sesión exitoso
+function showSuccessLogin() {
+    const message = document.createElement('div');
+    message.classList.add('success-message');
+    message.textContent = 'Ha iniciado sesión correctamente.';
+    document.body.appendChild(message);
+
+    setTimeout(() => {
+        message.remove();
+    }, 2000); // 2000 ms
+}
+
+// Función para iniciar sesión
+function startSession(username, email, city, country) {
+    const sessionData = { username, email, city, country, active: true };
+    setCookie('userSession', sessionData, 1); // Sesión activa por 1 día
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const loginButtons = document.querySelector('.access');             // Contenedor de los botones de login y registro
     const profileContainer = document.querySelector('.user_profile');   // Contenedor del perfil del usuario
@@ -6,41 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const profileMenu = document.querySelector('.profile__menu');       // Menú del perfil
 
     profileMenu.classList.add('menu__hidden');
-
-    // Función para obtener una cookie
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) {
-            try {
-                return JSON.parse(parts.pop().split(';').shift());
-            } catch (error) {
-                console.error("Error parsing JSON from cookie:", error);
-                return null;
-            }
-        }
-        return null;
-    }
-
-    // Función para establecer una cookie
-    function setCookie(name, value, days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        const expires = "expires=" + date.toUTCString();
-        document.cookie = name + "=" + JSON.stringify(value) + ";" + expires + ";path=/";
-    }
-
-    // Función para mostrar mensaje de inicio de sesión exitoso
-    function showSuccessLogin() {
-        const message = document.createElement('div');
-        message.classList.add('success-message');
-        message.textContent = 'Ha iniciado sesión correctamente.';
-        document.body.appendChild(message);
-
-        setTimeout(() => {
-            message.remove();
-        }, 2000); // 2000 ms
-    }
 
     // Manejar el envío del formulario de inicio de sesión
     document.querySelector('.login__form').addEventListener('submit', function(event) {
@@ -76,12 +82,6 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Usuario o contraseña incorrectos. Inténtelo de nuevo.');
         }
     });
-
-    // Función para iniciar sesión
-    function startSession(username, email, city, country) {
-        const sessionData = { username, email, city, country, active: true };
-        setCookie('userSession', sessionData, 1); // Sesión activa por 1 día
-    }
 
     // Mostrar/ocultar el menú del perfil al hacer clic en el ícono usando toggle de clase
     profileIcon.addEventListener('click', function() {

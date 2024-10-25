@@ -1,3 +1,60 @@
+
+// Función para establecer una cookie
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + JSON.stringify(value) + ";" + expires + ";path=/";
+}
+
+// Función para obtener una cookie
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        try {
+            return JSON.parse(parts.pop().split(';').shift());
+        } catch (error) {
+            console.error("Error parsing JSON from cookie:", error);
+            return null;
+        }
+    }
+    return null;
+}
+
+// Función mostrar mensaje de registro temporal
+function showSuccessRegister() {
+    const message = document.createElement('div');
+    message.classList.add('success-message');
+    message.textContent = 'Se ha registrado correctamente.';
+    document.body.appendChild(message);
+
+    setTimeout(() => {
+        message.remove();
+    }, 2000);
+}
+
+// Función para crear los campos adicionales para los hijos
+function createChildrenFields(numChildren) {
+    // Limpiar los campos anteriores
+    childrenContainer.innerHTML = '';
+
+    for (let i = 1; i <= numChildren; i++) {
+        const childDiv = document.createElement('div');
+        childDiv.classList.add('register__field');
+        childDiv.innerHTML = `
+            <h3>Hijo/a ${i}</h3>
+            <label for="child_name_${i}">Nombre</label>
+            <input type="text" id="child_name_${i}" name="child_name_${i}" placeholder="Nombre del hijo/a ${i}">
+            <label for="child_age_${i}">Edad</label>
+            <input type="number" id="child_age_${i}" name="child_age_${i}" placeholder="Edad del hijo/a ${i}">
+            <label for="child_toy_${i}">Juguete favorito</label>
+            <input type="text" id="child_toy_${i}" name="child_toy_${i}" placeholder="Juguete favorito del hijo/a ${i}">
+        `;
+        childrenContainer.appendChild(childDiv);
+    }
+}
+
 // Añadir el "placeholder" en el select al cargar la página
 const selectElement = document.getElementById('user_gender');
 selectElement.insertAdjacentHTML('afterbegin', '<option value="" selected hidden>Ingresa tu género</option>');
@@ -34,62 +91,6 @@ document.querySelector('.register__buttons input[value="Limpiar Datos"]').addEve
 document.addEventListener('DOMContentLoaded', function () {
     const childrenField = document.getElementById('user_children');
     const childrenContainer = document.getElementById('child_form');
-
-    // Función para crear los campos adicionales para los hijos
-    function createChildrenFields(numChildren) {
-        // Limpiar los campos anteriores
-        childrenContainer.innerHTML = '';
-
-        for (let i = 1; i <= numChildren; i++) {
-            const childDiv = document.createElement('div');
-            childDiv.classList.add('register__field');
-            childDiv.innerHTML = `
-                <h3>Hijo/a ${i}</h3>
-                <label for="child_name_${i}">Nombre</label>
-                <input type="text" id="child_name_${i}" name="child_name_${i}" placeholder="Nombre del hijo/a ${i}">
-                <label for="child_age_${i}">Edad</label>
-                <input type="number" id="child_age_${i}" name="child_age_${i}" placeholder="Edad del hijo/a ${i}">
-                <label for="child_toy_${i}">Juguete favorito</label>
-                <input type="text" id="child_toy_${i}" name="child_toy_${i}" placeholder="Juguete favorito del hijo/a ${i}">
-            `;
-            childrenContainer.appendChild(childDiv);
-        }
-    }
-
-    // Función mostrar mensaje de registro temporal
-    function showSuccessRegister() {
-        const message = document.createElement('div');
-        message.classList.add('success-message');
-        message.textContent = 'Se ha registrado correctamente.';
-        document.body.appendChild(message);
-
-        setTimeout(() => {
-            message.remove();
-        }, 2000);
-    }
-
-    // Función para establecer una cookie
-    function setCookie(name, value, days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        const expires = "expires=" + date.toUTCString();
-        document.cookie = name + "=" + JSON.stringify(value) + ";" + expires + ";path=/";
-    }
-
-    // Función para obtener una cookie
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) {
-            try {
-                return JSON.parse(parts.pop().split(';').shift());
-            } catch (error) {
-                console.error("Error parsing JSON from cookie:", error);
-                return null;
-            }
-        }
-        return null;
-    }
 
     // Actualizar campos cuando cambie el número de hijos
     childrenField.addEventListener('input', function () {
