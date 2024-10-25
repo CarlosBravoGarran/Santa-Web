@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
             children: childrenList
         };
 
-        setCookie('userData', userData, 1);                             // Guardar valores en una cookie
+        setCookie('user_${userName}', userData, 1);                     // Guardar valores en una cookie
         document.querySelector('.register').style.display = 'none';     // Cerrar la ventana del formulario tras la confirmación
         showSuccessRegister();                                          // Mostrar mensaje de éxito
         document.querySelector('.register__form').reset();              // Limpiar el formulario
