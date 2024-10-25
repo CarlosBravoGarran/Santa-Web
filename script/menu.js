@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const profileIcon = document.querySelector('.profile__icon');       // Ícono de perfil
     const profileMenu = document.querySelector('.profile__menu');       // Menú del perfil
 
+    profileMenu.classList.add('menu__hidden');
+
     // Manejar el envío del formulario de inicio de sesión
     document.querySelector('.login__form').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevenir que el formulario recargue la página
@@ -25,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Comprobar si el usuario introducido existe y la contraseña es correcta
         if (userData.username === username && userData.password === password) {
-            document.querySelector('.pop-up.login').style.display = 'none';     // Cerrar el pop-up de login
+            document.querySelector('.login').style.display = 'none';            // Cerrar el pop-up de login
             showSuccessLogin();                                                 // Mostrar mensaje de éxito
             loginButtons.style.display = 'none';                                // Ocultar los botones de "Iniciar Sesión" y "Registrarse"
             profileContainer.style.display = 'flex';                            // Mostrar el ícono de perfil
@@ -41,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Cerrar sesión
-    document.getElementById('logout_button').addEventListener('click', function () {
+    document.querySelector('.logout').addEventListener('click', function () {
         // Preguntar al usuario si desea cerrar sesión
         const confirmLogout = confirm('¿Está seguro de que desea cerrar sesión?');
     

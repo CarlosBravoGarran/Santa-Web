@@ -112,11 +112,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Validación de contraseña (mínimo 12 caracteres, con 2 números, 1 carácter especial, 1 mayúscula y 1 minúscula)
-        const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d{2,})(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
-        if (!passwordRegex.test(password)) {
-            alert('La contraseña debe tener al menos 12 caracteres, incluyendo 2 números, 1 carácter especial, 1 letra mayúscula y 1 letra minúscula.');
-            return;
-        }
+        //const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d{2,})(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
+        //if (!passwordRegex.test(password)) {
+        //    alert('La contraseña debe tener al menos 12 caracteres, incluyendo 2 números, 1 carácter especial, 1 letra mayúscula y 1 letra minúscula.');
+        //    return;
+        //}
 
         // Validación de confirmación de contraseña
         if (password !== confirmPassword) {

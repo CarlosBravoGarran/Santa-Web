@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="style/fonts.css">
     <link rel="stylesheet" href="style/user-access.css"> 
     <link rel="stylesheet" href="style/menu.css">
+    <link rel="stylesheet" href="style/profile.css">
     <link rel="icon" href="images/icon.png" type="image/png">
 </head>
 <body>
@@ -36,11 +37,9 @@
             <div class="user_profile"">
                 <img class="profile__icon" src="images/profile_icon.webp" alt="Icono de perfil de usuario">
                 <div class="profile__menu">
-                    <ul>
-                        <li><a href="#profile">Mi perfil</a></li>
-                        <li><a href="#my_letters">Mis cartas</a></li>
-                        <li id="logout_button">Cerrar sesión</li>
-                    </ul>
+                    <input type="button" class="my_profile" value="Mi Perfil">
+                    <input type="button" class="my_letters" value="Mis cartas">
+                    <input type="button" class="logout" value="Cerrar sesión">
                 </div>
             </div>
         </nav>
@@ -116,6 +115,22 @@
                 </form>
             </div>
         </div>
+        <div class="profile">
+            <div class="profile__content">
+                <h2>Mi Perfil</h2>
+                <p><strong>Nombre de usuario:</strong> <span id="username_display"></span></p>
+                <p><strong>Correo electrónico:</strong> <span id="email_display"></span></p>
+                <p><strong>Ciudad:</strong> <span id="city_display"></span></p>
+                <p><strong>País:</strong> <span id="country_display"></span></p>
+                <div class="profile__buttons">
+                    <input type="button" id="edit_profile" value="Editar">
+                    <input type="submit" id="save_profile" value="Guardar">
+                    <input type="reset" id="close_profile" value="Salir">
+                </div> 
+            </div>
+        </div>
+        
+        
         <!--Primera página - Inicio-->
         <section class="page page1" id="home">
             <div class="page1__title">
@@ -276,5 +291,6 @@
     <script src="script/countdown.js"></script>
     <script src="script/user-access.js"></script>
     <script src="script/menu.js"></script>
+    <script src="script/profile.js"></script>
 </body>
 </html>

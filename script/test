@@ -1,0 +1,18 @@
+
+    // Guardar cambios (simulación)
+    saveProfileButton.addEventListener('click', function () {
+        alert('Cambios guardados correctamente.');
+        profilePopup.style.display = 'none'; // Cerrar el pop-up después de guardar
+    });
+
+    // Cerrar el pop-up al hacer clic en "Cancelar"
+    closePopupButton.addEventListener('click', function () {
+        profilePopup.style.display = 'none';
+    });
+
+    // Cerrar el pop-up si se hace clic fuera de él
+    document.addEventListener('click', function (event) {
+        if (!profilePopup.contains(event.target) && !event.target.closest('.profile__icon')) {
+            profilePopup.style.display = 'none';
+        }
+    });
