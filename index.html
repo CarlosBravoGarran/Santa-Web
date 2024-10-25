@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="style/user-access.css"> 
     <link rel="stylesheet" href="style/menu.css">
     <link rel="stylesheet" href="style/profile.css">
+    <link rel="stylesheet" href="style/letters.css">
     <link rel="icon" href="images/icon.png" type="image/png">
 </head>
 <body>
@@ -118,10 +119,10 @@
         <div class="profile">
             <div class="profile__content">
                 <h2>Mi Perfil</h2>
-                <p><strong>Nombre de usuario:</strong> <span id="username_display"></span></p>
-                <p><strong>Correo electrónico:</strong> <span id="email_display"></span></p>
-                <p><strong>Ciudad:</strong> <span id="city_display"></span></p>
-                <p><strong>País:</strong> <span id="country_display"></span></p>
+                <p><b>Nombre de usuario:</b> <span id="username_display"></span></p>
+                <p><b>Correo electrónico:</b> <span id="email_display"></span></p>
+                <p><b>Ciudad:</b> <span id="city_display"></span></p>
+                <p><b>País:</b> <span id="country_display"></span></p>
                 <div class="profile__buttons">
                     <input type="button" id="edit_profile" value="Editar">
                     <input type="submit" id="save_profile" value="Guardar">
@@ -129,7 +130,30 @@
                 </div> 
             </div>
         </div>
-        
+        <div id="letters" class="letters-popup">
+            <div class="letters-popup__container">
+                <h2 class="letters-popup__title">Tus Cartas</h2>
+                <div class="no-letters">
+                    NO HAY CARTAS EN EL BUZÓN DE PAPÁ NOEL
+                </div>
+                <div class="letters-popup__content">
+                    <img class="letters-popup__img" src="images/niño1.jpg" alt="Retrato de Juan Rodriguez, autor español de la carta a Papá Noel">
+                    <h2 class="letters-popup__name">Juan Rodriguez</h2>
+                    <h3 class="letters-popup__place">Toledo, España</h3>
+                    <p class="letters-popup__text">
+                        Querido Papá Noel, este año he sido muy bueno y me gustaría pedirte un coche teledirigido y un balón de fútbol. Prometo compartirlo con mis amigos y seguir siendo obediente. ¡Gracias y felices fiestas!
+                    </p>
+                </div>
+                <div class="letters-popup__content">
+                    <img class="letters-popup__img" src="images/niño1.jpg" alt="Retrato de Juan Rodriguez, autor español de la carta a Papá Noel">
+                    <h2 class="letters-popup__name">Juan Rodriguez</h2>
+                    <h3 class="letters-popup__place">Toledo, España</h3>
+                    <p class="letters-popup__text">
+                        Querido Papá Noel, este año he sido muy bueno y me gustaría pedirte un coche teledirigido y un balón de fútbol. Prometo compartirlo con mis amigos y seguir siendo obediente. ¡Gracias y felices fiestas!
+                    </p>
+                </div>
+            </div>
+        </div>
         
         <!--Primera página - Inicio-->
         <section class="page page1" id="home">
