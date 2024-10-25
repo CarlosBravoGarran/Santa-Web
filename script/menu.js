@@ -1,12 +1,46 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Elementos de la barra de navegación
     const loginButtons = document.querySelector('.access');             // Contenedor de los botones de login y registro
     const profileContainer = document.querySelector('.user_profile');   // Contenedor del perfil del usuario
     const profileIcon = document.querySelector('.profile__icon');       // Ícono de perfil
     const profileMenu = document.querySelector('.profile__menu');       // Menú del perfil
 
     profileMenu.classList.add('menu__hidden');
+
+    // Función para obtener una cookie
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) {
+            try {
+                return JSON.parse(parts.pop().split(';').shift());
+            } catch (error) {
+                console.error("Error parsing JSON from cookie:", error);
+                return null;
+            }
+        }
+        return null;
+    }
+
+    // Función para establecer una cookie
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + JSON.stringify(value) + ";" + expires + ";path=/";
+    }
+
+    // Función para mostrar mensaje de inicio de sesión exitoso
+    function showSuccessLogin() {
+        const message = document.createElement('div');
+        message.classList.add('success-message');
+        message.textContent = 'Ha iniciado sesión correctamente.';
+        document.body.appendChild(message);
+
+        setTimeout(() => {
+            message.remove();
+        }, 2000); // 2000 ms
+    }
 
     // Manejar el envío del formulario de inicio de sesión
     document.querySelector('.login__form').addEventListener('submit', function(event) {
@@ -16,26 +50,38 @@ document.addEventListener('DOMContentLoaded', function () {
         const username = document.getElementById('login_username').value;
         const password = document.getElementById('login_password').value;
 
-        // Intentar obtener los datos de usuario guardados en la cookie
-        const userData = getCookie('userData');
+        // Obtener la lista de usuarios registrados
+        const registeredUsers = getCookie('registered_users') || [];
 
-        // Si no hay datos guardados
-        if (!userData) {
-            alert('No existen usuarios registrados. Por favor, regístrese primero.');
+        // Verificar si el usuario está registrado
+        if (!registeredUsers.includes(username)) {
+            alert('No existe este usuario registrado. Por favor, regístrese primero.');
             return;
         }
 
-        // Comprobar si el usuario introducido existe y la contraseña es correcta
-        if (userData.username === username && userData.password === password) {
+        // Obtener los datos del usuario desde la cookie 'user_<username>'
+        const userData = getCookie(`user_${username}`);
+
+        // Verificar que el usuario y la contraseña sean correctos
+        if (userData && userData.password === password) {
             document.querySelector('.login').style.display = 'none';            // Cerrar el pop-up de login
             showSuccessLogin();                                                 // Mostrar mensaje de éxito
             loginButtons.style.display = 'none';                                // Ocultar los botones de "Iniciar Sesión" y "Registrarse"
             profileContainer.style.display = 'flex';                            // Mostrar el ícono de perfil
             document.querySelector('.login__form').reset();                     // Limpiar el formulario
+
+            // Iniciar la sesión con el correo electrónico del usuario autenticado
+            startSession(userData.username, userData.email, userData.city, userData.country);
         } else {
             alert('Usuario o contraseña incorrectos. Inténtelo de nuevo.');
         }
     });
+
+    // Función para iniciar sesión
+    function startSession(username, email, city, country) {
+        const sessionData = { username, email, city, country, active: true };
+        setCookie('userSession', sessionData, 1); // Sesión activa por 1 día
+    }
 
     // Mostrar/ocultar el menú del perfil al hacer clic en el ícono usando toggle de clase
     profileIcon.addEventListener('click', function() {
@@ -44,13 +90,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Cerrar sesión
     document.querySelector('.logout').addEventListener('click', function () {
-        // Preguntar al usuario si desea cerrar sesión
         const confirmLogout = confirm('¿Está seguro de que desea cerrar sesión?');
     
         if (confirmLogout) {
             profileContainer.style.display = 'none';            // Ocultar el perfil
             loginButtons.style.display = 'flex';                // Volver a mostrar los botones de login y registro
             profileMenu.classList.add('menu__hidden');          // Ocultar menú
+
+            // Eliminar la cookie de sesión para cerrar la sesión
+            setCookie('userSession', '', -1); // Expira la cookie para cerrar la sesión
         }
     });
     

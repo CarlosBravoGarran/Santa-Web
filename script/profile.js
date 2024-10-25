@@ -1,41 +1,65 @@
 
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return JSON.parse(parts.pop().split(';').shift());
-    return null;
-}
-
-// Función para establecer una cookie
-function setCookie(name, value, days) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // Días hasta que expire
-    const expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + JSON.stringify(value) + ";" + expires + ";path=/";
-}
-
-
 document.addEventListener('DOMContentLoaded', function () {
+
+    document.cookie = "userSession=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+
+    // Elementos para el pop-up de perfil
     const profilePopup = document.querySelector('.profile');
     const editProfileButton = document.getElementById('edit_profile');
     const closePopupButton = document.getElementById('close_profile');
     const saveProfileButton = document.getElementById('save_profile');
     const myProfileButton = document.querySelector('.my_profile');
 
-    // Constantes para los displays
+    // Elementos de visualización de datos de perfil
     const usernameDisplay = document.getElementById('username_display');
     const emailDisplay = document.getElementById('email_display');
     const cityDisplay = document.getElementById('city_display');
     const countryDisplay = document.getElementById('country_display');
-    
+
+    // Función para obtener una cookie
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) {
+            try {
+                return JSON.parse(parts.pop().split(';').shift());
+            } catch (error) {
+                console.error("Error parsing JSON from cookie:", error);
+                return null;
+            }
+        }
+        return null;
+    }
+
+    // Función para establecer una cookie
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + JSON.stringify(value) + ";" + expires + ";path=/";
+    }
+
+    // Función para eliminar una cookie
+    function deleteCookie(name) {
+        document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    }
+
     // Mostrar el pop-up de perfil y cargar datos al hacer clic en el botón "Mi Perfil"
     myProfileButton.addEventListener('click', function () {
-        const userData = getCookie('userData');
+        const session = getCookie('userSession');
+        if (!session || !session.active) {
+            alert("No hay ninguna sesión activa.");
+            return;
+        }
 
-        usernameDisplay.textContent = userData?.username || '';
-        emailDisplay.textContent = userData?.email || '';
-        cityDisplay.textContent = userData?.city || '';
-        countryDisplay.textContent = userData?.country || '';
+        const userData = getCookie(`user_${session.username}`);
+        if (userData) {
+            usernameDisplay.textContent = userData.username || '';
+            emailDisplay.textContent = userData.email || '';
+            cityDisplay.textContent = userData.city || '';
+            countryDisplay.textContent = userData.country || '';
+        }
 
         profilePopup.style.display = 'flex';
     });
@@ -50,19 +74,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Guardar los cambios al hacer clic en "Guardar"
     saveProfileButton.addEventListener('click', function () {
-        const userData = getCookie('userData') || {};
+        const session = getCookie('userSession');
+        if (!session || !session.active) {
+            alert("No hay ninguna sesión activa para guardar cambios.");
+            return;
+        }
 
-        userData.username = usernameDisplay.textContent;
+        // Obtener los datos actuales de la cookie del usuario
+        const oldUsername = session.username;
+        const userData = getCookie(`user_${oldUsername}`) || {};
+
+        // Actualizar solo los campos editados
+        const newUsername = usernameDisplay.textContent;
+        userData.username = newUsername;
         userData.email = emailDisplay.textContent;
         userData.city = cityDisplay.textContent;
         userData.country = countryDisplay.textContent;
 
-        setCookie('userData', userData, 1);
+        // Guardar la cookie de `user_<username>` actualizada
+        setCookie(`user_${newUsername}`, userData, 7);
 
+        // Si el nombre de usuario ha cambiado, actualizar `registered_users` y `userSession`
+        if (newUsername !== oldUsername) {
+            deleteCookie(`user_${oldUsername}`);
+
+            // Actualizar `registered_users`
+            let registeredUsers = getCookie('registered_users') || [];
+            const index = registeredUsers.indexOf(oldUsername);
+            if (index !== -1) {
+                registeredUsers[index] = newUsername;
+                setCookie('registered_users', registeredUsers, 7);
+            }
+
+            // Actualizar la cookie `userSession` con el nuevo nombre de usuario
+            session.username = newUsername;
+            setCookie('userSession', session, 1);
+        }
+
+        // Restaurar los estilos de los campos y quitar la edición
         [usernameDisplay, emailDisplay, cityDisplay, countryDisplay].forEach(display => {
             display.style.border = 'none';
             display.removeAttribute('contenteditable');
         });
+
+        alert("Perfil actualizado correctamente.");
     });
 
     // Cerrar el pop-up al hacer clic en "Cerrar"

@@ -2,7 +2,6 @@
 const selectElement = document.getElementById('user_gender');
 selectElement.insertAdjacentHTML('afterbegin', '<option value="" selected hidden>Ingresa tu género</option>');
 
-
 // Abrir el pop-up de registro
 document.querySelector('.access input[value="Registrarse"]').addEventListener('click', function() {
     document.querySelector('.register').style.display = 'flex';
@@ -29,7 +28,6 @@ document.querySelector('.register__buttons input[value="Limpiar Datos"]').addEve
     if (confirm('¿Está seguro de que desea limpiar todos los campos?')) {
         document.querySelector('.register__form').reset();
         document.getElementById('child_form').innerHTML = ''; // Limpiar los campos de los hijos
-
     }
 });
 
@@ -43,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
         childrenContainer.innerHTML = '';
 
         for (let i = 1; i <= numChildren; i++) {
-            // Crear un contenedor para cada hijo
             const childDiv = document.createElement('div');
             childDiv.classList.add('register__field');
             childDiv.innerHTML = `
@@ -55,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 <label for="child_toy_${i}">Juguete favorito</label>
                 <input type="text" id="child_toy_${i}" name="child_toy_${i}" placeholder="Juguete favorito del hijo/a ${i}">
             `;
-            // Añadir el contenedor al formulario
             childrenContainer.appendChild(childDiv);
         }
     }
@@ -69,15 +65,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(() => {
             message.remove();
-        }, 2000); // 2000 ms
+        }, 2000);
     }
 
     // Función para establecer una cookie
     function setCookie(name, value, days) {
         const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // Días hasta que expire
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         const expires = "expires=" + date.toUTCString();
         document.cookie = name + "=" + JSON.stringify(value) + ";" + expires + ";path=/";
+    }
+
+    // Función para obtener una cookie
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) {
+            try {
+                return JSON.parse(parts.pop().split(';').shift());
+            } catch (error) {
+                console.error("Error parsing JSON from cookie:", error);
+                return null;
+            }
+        }
+        return null;
     }
 
     // Actualizar campos cuando cambie el número de hijos
@@ -87,15 +98,14 @@ document.addEventListener('DOMContentLoaded', function () {
         if (numChildren > 0) {
             createChildrenFields(numChildren);
         } else {
-            childrenContainer.innerHTML = ''; // Si no tiene hijos limpiar el contenedor
+            childrenContainer.innerHTML = '';
         }
     });
 
     // Comprobar el formulario y enviarlo
     document.querySelector('.register__form').addEventListener('submit', function (event) {
-        event.preventDefault(); // Evitar que recargue la página al enviar el formulario
+        event.preventDefault();
 
-        // Obtener valores de los campos del formulario
         const username = document.getElementById('user_name').value;
         const password = document.getElementById('user_password').value;
         const confirmPassword = document.getElementById('user_confirm_password').value;
@@ -111,12 +121,12 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Validación de contraseña (mínimo 12 caracteres, con 2 números, 1 carácter especial, 1 mayúscula y 1 minúscula)
-        //const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d{2,})(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
-        //if (!passwordRegex.test(password)) {
-        //    alert('La contraseña debe tener al menos 12 caracteres, incluyendo 2 números, 1 carácter especial, 1 letra mayúscula y 1 letra minúscula.');
-        //    return;
-        //}
+        // Validación de contraseña (mínimo 12 caracteres, 2 números, 1 carácter especial, 1 mayúscula, 1 minúscula)
+        const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d{2,})(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
+        if (!passwordRegex.test(password)) {
+            alert('La contraseña debe tener al menos 12 caracteres, 2 números, 1 carácter especial, 1 letra mayúscula y 1 letra minúscula.');
+            return;
+        }
 
         // Validación de confirmación de contraseña
         if (password !== confirmPassword) {
@@ -137,53 +147,37 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Validación de hijos (campo numérico)
-        if (isNaN(children) || children < 0) {
-            alert('Por favor, ingrese un número válido para el campo "hijos".');
-            return;
-        }
-
-        // Comprobar y obtener datos de los hijos
         const childrenList = [];
         for (let i = 1; i <= children; i++) {
             const childName = document.getElementById(`child_name_${i}`).value;
             const childAge = document.getElementById(`child_age_${i}`).value;
             const childToy = document.getElementById(`child_toy_${i}`).value;
 
-            if (childName.length < 2) {
-                alert(`El nombre de la hija/o ${i} debe tener al menos 2 caracteres.`);
-                return;
-            }
-
-            if (isNaN(childAge) || childAge <= 0) {
-                alert(`Por favor, ingrese una edad válida para la hija/o ${i}.`);
-                return;
-            }
-
-            if (childToy.length < 2) {
-                alert(`El juguete favorito de la hija/o ${i} debe tener al menos 2 caracteres.`);
+            if (childName.length < 2 || isNaN(childAge) || childAge <= 0 || childToy.length < 2) {
+                alert(`Por favor, verifica los datos de la hija/o ${i}.`);
                 return;
             }
 
             childrenList.push({ name: childName, age: childAge, toy: childToy });
         }
 
-        // Crear objeto con los datos del usuario
-        const userData = {
-            username: username,
-            password: password,
-            email: email,
-            city: city,
-            country: country,
-            gender: gender,
-            children: childrenList
-        };
+        const userData = { username, password, email, city, country, gender, children: childrenList };
 
-        setCookie('user_${userName}', userData, 1);                     // Guardar valores en una cookie
-        document.querySelector('.register').style.display = 'none';     // Cerrar la ventana del formulario tras la confirmación
-        showSuccessRegister();                                          // Mostrar mensaje de éxito
-        document.querySelector('.register__form').reset();              // Limpiar el formulario
-        childrenContainer.innerHTML = '';                               // Limpiar los campos de los hijos
+        // Obtener y actualizar la lista de usuarios registrados
+        let registeredUsers = getCookie('registered_users') || [];
+        if (registeredUsers.includes(username)) {
+            alert('Este usuario ya está registrado.');
+            return;
+        }
+        registeredUsers.push(username);
+        setCookie('registered_users', registeredUsers, 7); // Guardar lista de usuarios
+
+        // Guardar datos del usuario individual
+        setCookie(`user_${username}`, userData, 1); // Guardar valores en una cookie
+        document.querySelector('.register').style.display = 'none';
+        showSuccessRegister();
+        document.querySelector('.register__form').reset();
+        childrenContainer.innerHTML = '';
     });
 });
 
@@ -208,23 +202,3 @@ document.addEventListener('click', function(event) {
         logIn.style.display = 'none';
     }
 });
-
-// Función para obtener datos de una cookie
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return JSON.parse(parts.pop().split(';').shift());
-    return null;
-}
-
-// Función mostrar mensaje de registro temporal
-function showSuccessLogin() {
-    const message = document.createElement('div');
-    message.classList.add('success-message');
-    message.textContent = 'Ha iniciado sesión correctamente.';
-    document.body.appendChild(message);
-
-    setTimeout(() => {
-        message.remove();
-    }, 2000); // 2000 ms
-}
