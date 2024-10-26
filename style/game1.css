@@ -11,7 +11,7 @@
 }
 
 .game-container h2 {
-    color: #fff;
+    color: var(--color-text);
     font-size: clamp(1.5rem, 2vw, 2rem);
     margin: 20px;
 }
@@ -26,7 +26,7 @@
 .score, .timer {
     font-size: 1.2rem;
     margin: 0 10px;
-    color: #fff;
+    color: var(--color-text);
 }
 
 .game_start-button {

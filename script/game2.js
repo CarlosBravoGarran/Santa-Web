@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const game2Button = document.getElementById('game2_button'); 
     const gameImage = document.getElementById('game_image');
     const game1Container = document.getElementById('game-container');
+    const game3Image = document.querySelector('.game3_img');
     const game2Container = document.querySelector('.game2__container');
     const memoryGrid = document.querySelector('.game2__grid');
     const restartButton = document.querySelector('.game2__restart-button');
@@ -92,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
     game2Button.addEventListener('click', function() {
         gameImage.style.display = 'none';
         game1Container.style.display = 'none';
+        game3Image.style.display = 'none';
         game2Container.style.display = 'flex';
         createBoard();
     });

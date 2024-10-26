@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="style/letters.css">
     <link rel="stylesheet" href="style/game1.css">
     <link rel="stylesheet" href="style/game2.css">
+    <link rel="stylesheet" href="style/game3.css">
     <link rel="icon" href="images/icon.png" type="image/png">
 </head>
 <body>
@@ -273,15 +274,15 @@
                 <div class="column_p5 column1_p5">
                     <h3>¡Juega con los elfos y gana premios!</h3>
                     <div class="game_buttons">
-                        <button id="game1_button" aria-label="Juego 1: Carrera de Santa">Juego 1</button>
-                        <button id="game2_button" aria-label="Juego 2: Construye un muñeco de nieve">Juego 2</button>
-                        <button onclick="document.getElementById('game_image').src='images/game3_village.png'" aria-label="Juego 3: El pueblo navideño">Juego 3</button>
+                        <button id="game1_button" aria-label="Juego 1: Encuentra el Elfo">Juego 1</button>
+                        <button id="game2_button" aria-label="Juego 2: Memory Navideño">Juego 2</button>
+                        <button id="game3_button" aria-label="Juego 3: El pueblo navideño">Juego 3</button>
                     </div>
                 </div>
                 <div class="column_p5 column2_p5">
                     <img id="game_image" src="images/game_start.jpg" alt="Juegos Navideños">
                     <div class="game-container" id="game-container">
-                        <h2>Encuentra al Elfo</h2>
+                        <h2>Encuentra el Elfo</h2>
                         <div class="game_items">
                             <p class="score">Score: <span id="score">0</span></p>
                             <p class="timer">Time Left: <span id="timer">90</span> seconds</p>
@@ -293,13 +294,14 @@
                     </div>
                     <div class="game2__container">
                         <div class="game2__items">
-                            <h2>Juego de Memoria Navideño</h2>
+                            <h2>Memory Navideño</h2>
                             <button class="game2__restart-button">Restart</button>
                         </div>
                         <div class="game2__grid" id="memoryGrid">
                             
                         </div>
                     </div>
+                    <img class="game3_img" src="images/game3_village.png">
                 </div>
             </div>
         </section>
@@ -330,5 +332,6 @@
     <script src="script/letters.js"></script>
     <script src="script/game1.js"></script>
     <script src="script/game2.js"></script>
+    <script src="script/game3.js"></script>
 </body>
 </html>
