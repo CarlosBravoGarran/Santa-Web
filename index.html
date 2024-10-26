@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="style/menu.css">
     <link rel="stylesheet" href="style/profile.css">
     <link rel="stylesheet" href="style/letters.css">
+    <link rel="stylesheet" href="style/game1.css">
     <link rel="icon" href="images/icon.png" type="image/png">
 </head>
 <body>
@@ -271,14 +272,26 @@
                 <div class="column_p5 column1_p5">
                     <h3>¡Juega con los elfos y gana premios!</h3>
                     <div class="game_buttons">
-                        <button onclick="document.getElementById('game_image').src='images/game1_santa_race.png'" aria-label="Juego 1: Carrera de Santa">Juego 1</button>
+                        <button id="game1_button" aria-label="Juego 1: Carrera de Santa">Juego 1</button>
                         <button onclick="document.getElementById('game_image').src='images/game2_snowman.png'" aria-label="Juego 2: Construye un muñeco de nieve">Juego 2</button>
                         <button onclick="document.getElementById('game_image').src='images/game3_village.png'" aria-label="Juego 3: El pueblo navideño">Juego 3</button>
                     </div>
                 </div>
-                <figure class="column_p5 column2_p5">
+                <div class="column_p5 column2_p5">
                     <img id="game_image" src="images/game_start.jpg" alt="Juegos Navideños">
-                </figure>
+                    <div class="game-container" id="game-container">
+                        <h2>Click The Circle</h2>
+                        <div class="game_items">
+                            <p class="score">Score: <span id="score">0</span></p>
+                            <p class="timer">Time Left: <span id="timer">90</span> seconds</p>
+                            <button class="game_start-button">Start Game</button>
+                        </div>
+                        <div class="play-area">
+                            <div class="circle"></div>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -306,5 +319,6 @@
     <script src="script/profile.js"></script>
     <script src="script/letter-send.js"></script>
     <script src="script/letters.js"></script>
+    <script src="script/game1.js"></script>
 </body>
 </html>
