@@ -78,6 +78,10 @@
     box-sizing: border-box;
 }
 
+.letters-popup__card:hover {
+    box-shadow: 0 0 10px 2px #fff6;
+}
+
 .letters-popup__name{
     font-size: clamp(1rem, 2vw, 1.5rem);
     font-weight: bold;
@@ -137,4 +141,19 @@
     cursor: pointer;
     background-color: var(--color-primary);
     color: #fff;
+}
+
+/*--------Drag and Drop------*/
+
+.dragged_letter {
+    opacity: 1 !important;
+    transform: scale(1.05);
+}
+
+.not-dragged_letter .letters-popup__card {
+    opacity: 0.5;
+}
+
+.not-dragged_letter .dragged {
+    opacity: 1 !important; 
 }
