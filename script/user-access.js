@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setCookie('registered_users', registeredUsers, 7); // Guardar lista de usuarios
 
         // Guardar datos del usuario individual
-        setCookie(`user_${username}`, userData, 1); // Guardar valores en una cookie
+        setCookie(`user_${username}`, userData, 7); // Guardar valores en una cookie
         document.querySelector('.register').style.display = 'none';
         showSuccessRegister();
         document.querySelector('.register__form').reset();

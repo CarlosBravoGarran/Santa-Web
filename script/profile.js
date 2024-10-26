@@ -88,10 +88,11 @@ document.addEventListener('DOMContentLoaded', function () {
         userData.city = cityDisplay.textContent;
         userData.country = countryDisplay.textContent;
 
-        // Guardar la cookie de `user_<username>` actualizada
+        // Guardar la cookie de `user_<username>` actualizada y borrar la anterior
         setCookie(`user_${newUsername}`, userData, 7);
+        deleteCookie(`user_${oldUsername}`);
 
-        // Si el nombre de usuario ha cambiado, actualizar `registered_users` y `userSession`
+        // Si el nombre de usuario ha cambiado, actualizar `registered_users`, `userSession` y user_<username>_letters
         if (newUsername !== oldUsername) {
             deleteCookie(`user_${oldUsername}`);
 
@@ -105,7 +106,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Actualizar la cookie `userSession` con el nuevo nombre de usuario
             session.username = newUsername;
-            setCookie('userSession', session, 1);
+            setCookie('userSession', session, 7);
+
+            // Actualizar la cookie `user_<username>_letters`
+            const letters = getCookie(`user_${oldUsername}_letters`) || [];
+            setCookie(`user_${newUsername}_letters`, letters, 7);
+            deleteCookie(`user_${oldUsername}_letters`);
         }
 
         // Restaurar los estilos de los campos y quitar la edición

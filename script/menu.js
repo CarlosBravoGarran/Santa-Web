@@ -33,7 +33,7 @@ function showSuccessLogin() {
 // Función para iniciar sesión
 function startSession(username, email, city, country) {
     const sessionData = { username, email, city, country, active: true };
-    setCookie('userSession', sessionData, 1); // Sesión activa por 1 día
+    setCookie('userSession', sessionData, 1);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
