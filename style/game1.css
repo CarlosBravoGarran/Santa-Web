@@ -1,0 +1,65 @@
+.game-container {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+
+}
+
+.game-container h2 {
+    color: #fff;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    margin: 20px;
+}
+
+.game_items{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+
+.score, .timer {
+    font-size: 1.2rem;
+    margin: 0 10px;
+    color: #fff;
+}
+
+.game_start-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    margin: 5px 5px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.play-area {
+    position: relative;
+    width: 90%;
+    height: 65%;
+    border: 2px solid #333;
+    background-color: #ffffff;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    display: none;
+    width: clamp(25px, 5vw, 50px);
+    height: clamp(25px, 5vw, 50px);
+    border-radius: 50%;
+    background-color: #ff5722;
+    cursor: pointer;
+    transition: top 0.5s ease, left 0.5s ease;
+    top: 10px;
+    left: 10px;
+}
+
