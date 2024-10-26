@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="style/user-access.css"> 
     <link rel="stylesheet" href="style/menu.css">
     <link rel="stylesheet" href="style/profile.css">
+    <link rel="stylesheet" href="style/letters.css">
+    <link rel="stylesheet" href="style/game1.css">
     <link rel="icon" href="images/icon.png" type="image/png">
 </head>
 <body>
@@ -118,10 +120,10 @@
         <div class="profile">
             <div class="profile__content">
                 <h2>Mi Perfil</h2>
-                <p><strong>Nombre de usuario:</strong> <span id="username_display"></span></p>
-                <p><strong>Correo electrónico:</strong> <span id="email_display"></span></p>
-                <p><strong>Ciudad:</strong> <span id="city_display"></span></p>
-                <p><strong>País:</strong> <span id="country_display"></span></p>
+                <p><b>Nombre de usuario:</b> <span id="username_display"></span></p>
+                <p><b>Correo electrónico:</b> <span id="email_display"></span></p>
+                <p><b>Ciudad:</b> <span id="city_display"></span></p>
+                <p><b>País:</b> <span id="country_display"></span></p>
                 <div class="profile__buttons">
                     <input type="button" id="edit_profile" value="Editar">
                     <input type="submit" id="save_profile" value="Guardar">
@@ -129,7 +131,18 @@
                 </div> 
             </div>
         </div>
-        
+        <div id="letters" class="letters">
+            <div class="letters-popup">
+                <h2 class="letters-popup__title">Tus Cartas</h2>
+                <div class="no-letters">
+                    NO HAY CARTAS EN EL BUZÓN DE PAPÁ NOEL
+                </div>
+                <div class="letters-popup__container">
+
+                </div>
+                <input type="button" id="letters-popup__close" class="letters-popup__close" value="Cerrar">
+            </div>
+        </div>
         
         <!--Primera página - Inicio-->
         <section class="page page1" id="home">
@@ -259,14 +272,26 @@
                 <div class="column_p5 column1_p5">
                     <h3>¡Juega con los elfos y gana premios!</h3>
                     <div class="game_buttons">
-                        <button onclick="document.getElementById('game_image').src='images/game1_santa_race.png'" aria-label="Juego 1: Carrera de Santa">Juego 1</button>
+                        <button id="game1_button" aria-label="Juego 1: Carrera de Santa">Juego 1</button>
                         <button onclick="document.getElementById('game_image').src='images/game2_snowman.png'" aria-label="Juego 2: Construye un muñeco de nieve">Juego 2</button>
                         <button onclick="document.getElementById('game_image').src='images/game3_village.png'" aria-label="Juego 3: El pueblo navideño">Juego 3</button>
                     </div>
                 </div>
-                <figure class="column_p5 column2_p5">
+                <div class="column_p5 column2_p5">
                     <img id="game_image" src="images/game_start.jpg" alt="Juegos Navideños">
-                </figure>
+                    <div class="game-container" id="game-container">
+                        <h2>Click The Circle</h2>
+                        <div class="game_items">
+                            <p class="score">Score: <span id="score">0</span></p>
+                            <p class="timer">Time Left: <span id="timer">90</span> seconds</p>
+                            <button class="game_start-button">Start Game</button>
+                        </div>
+                        <div class="play-area">
+                            <div class="circle"></div>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -292,6 +317,8 @@
     <script src="script/user-access.js"></script>
     <script src="script/menu.js"></script>
     <script src="script/profile.js"></script>
-    <script src="script/letter.js"></script>
+    <script src="script/letter-send.js"></script>
+    <script src="script/letters.js"></script>
+    <script src="script/game1.js"></script>
 </body>
 </html>

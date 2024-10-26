@@ -77,7 +77,6 @@
     font-size: clamp(0.7rem, 1.5vw, 1.1rem);
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 14px;
     border: 1px solid #000;
 }
 
@@ -203,7 +202,6 @@
     font-size: clamp(0.7rem, 1.5vw, 1.1rem);
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 14px;
     border: 1px solid #000;
 }
 
