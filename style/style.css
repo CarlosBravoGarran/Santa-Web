@@ -545,7 +545,6 @@ h1{
     .column_p5{
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
         margin: 20px auto;
     }
@@ -569,7 +568,7 @@ h1{
 
     .column2_p5 {
         width: 90%;
-        height: 90%;
+        height: 70%;
     }
 
     .social_media{
@@ -671,7 +670,6 @@ h1{
     .column_p5{
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
         align-items: center;
         margin: 20px auto;
     }
@@ -697,7 +695,7 @@ h1{
 
     .column2_p5 {
         width: 90%;
-        height: 90%;
+        height: 70%;
     }
 
     .social_media{
