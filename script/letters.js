@@ -1,22 +1,19 @@
+
 document.addEventListener('DOMContentLoaded', function () {
-    const lettersPopup = document.getElementById('letters'); // El pop-up de cartas
-    const lettersContainer = document.querySelector('.letters-popup__container'); // Contenedor donde se mostrarán las cartas
-    const myLettersButton = document.querySelector('.my_letters'); // Botón para abrir "Mis cartas"
+    const lettersPopup = document.getElementById('letters');                        // El pop-up de cartas
+    const lettersContainer = document.querySelector('.letters-popup__container');   // Contenedor de las cartas
+    const myLettersButton = document.querySelector('.my_letters');                  // Botón para abrir "Mis cartas"
 
     // Función para obtener los datos de la cookie
     function getCookie(name) {
         const value = `; ${document.cookie}`;
         const parts = value.split(`; ${name}=`);
         if (parts.length === 2) {
-            try {
-                return JSON.parse(parts.pop().split(';').shift());
-            } catch (error) {
-                console.error("Error parsing JSON from cookie:", error);
-                return null;
-            }
+            return JSON.parse(parts.pop().split(';').shift());
         }
         return null;
     }
+    
 
     // Función para establecer la cookie
     function setCookie(name, value, days) {
@@ -36,11 +33,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (userLetters.length === 0) {
             noLettersMessage.style.display = 'flex'; // Mostrar el mensaje de "No hay cartas"
+            document.querySelector('.letters-popup__container').style.display = 'none' // Ocultar el contenedor
         } else {
             noLettersMessage.style.display = 'none'; // Ocultar el mensaje
+            document.querySelector('.letters-popup__container').style.display = 'flex'; // Mostrar el contenedor
             userLetters.forEach((letter, index) => {
                 const card = document.createElement('div');
-                card.classList.add('letters-popup__content');
+                card.classList.add('letters-popup__card');
 
                 card.innerHTML = `
                     <button class="letters-popup__x" data-index="${index}">x</button>
@@ -75,12 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
         userLetters.splice(index, 1);
         setCookie(userLettersKey, userLetters, 7); // Actualizar la cookie con el nuevo array de cartas
 
-        lettersContainer.innerHTML = `
-            <h2 class="letters-popup__title">Tus Cartas</h2>
-            <div class="no-letters">
-                NO HAY CARTAS EN EL BUZÓN DE PAPÁ NOEL
-            </div>
-            `; // Limpiar el contenedor de cartas manteniendo el título
+        lettersContainer.innerHTML = ``; // Limpiar el contenedor
 
 
         displayLetters(); // Refrescar la vista de cartas
@@ -88,4 +82,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Evento para abrir el pop-up y cargar cartas al hacer clic en "Mis cartas"
     myLettersButton.addEventListener('click', displayLetters);
+
+    // Evento para cerrar el pop-up con el botón "Cerrar"
+    document.querySelector('.letters-popup__close').addEventListener('click', function () {
+        lettersPopup.style.display = 'none';
+        lettersContainer.innerHTML = ``; // Limpiar el contenedor
+    });
+
+    // Evento para cerrar el pop-up al hacer clic fuera del él
+    window.addEventListener('click', function (e) {
+        if (e.target === lettersPopup) {
+            lettersPopup.style.display = 'none';
+            lettersContainer.innerHTML = ``; // Limpiar el contenedor
+        }
+    });
 });

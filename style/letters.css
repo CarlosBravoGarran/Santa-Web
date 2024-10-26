@@ -1,5 +1,5 @@
 
-.letters-popup {
+.letters{
     width: 100%;
     height: 100vh;
     display: none;
@@ -14,16 +14,16 @@
     background-color: #0008;
 }
 
-.letters-popup__container{
+.letters-popup{
     width: 80%;
     min-width: 300px;
     height: 80%;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     border-radius: 8px;
     background-color: var(--color-secondary);
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 .no-letters{
@@ -41,10 +41,10 @@
     text-align: center;
     font-weight: bold;
     padding: 0 10px;
+    margin: auto;
 }
 
 .letters-popup__title{
-    width: 100%;
     margin: 15px 0;
     margin-bottom: 5px;
     padding: 10px;
@@ -54,10 +54,19 @@
     color: var(--color-text);
 }
 
-.letters-popup__content{
+.letters-popup__container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.letters-popup__card{
     width: 30%;
     min-width: 200px;
-    height: 60%;
     margin: 10px;
     padding: 20px 10px;
     flex-direction: column;
@@ -83,6 +92,7 @@
 
 .letters-popup__text{   
     font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+    overflow-wrap: break-word;
 }
 
 .letters-popup__img{
@@ -94,8 +104,6 @@
     object-fit: cover;
     border-radius: 8px;
 }
-
-
 
 .letters-popup__x{
     width: 35px;
@@ -114,3 +122,19 @@
     background-color: #f88;
 }
 
+
+.letters-popup__close{
+    background-color: var(--color-text);
+    padding: 10px;
+    font-size: clamp(0.7rem, 1.5vw, 1.1rem);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    border: 1px solid #000;
+    margin: 20px 0;
+}
+
+.letters-popup__close:hover{
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: #fff;
+}

@@ -4,15 +4,11 @@ function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) {
-        try {
-            return JSON.parse(parts.pop().split(';').shift());
-        } catch (error) {
-            console.error("Error parsing JSON from cookie:", error);
-            return null;
-        }
+        return JSON.parse(parts.pop().split(';').shift());
     }
     return null;
 }
+
 
 // Función para establecer una cookie
 function setCookie(name, value, days) {
