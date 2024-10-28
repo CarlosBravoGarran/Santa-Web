@@ -60,15 +60,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Finalizar el juego
-    function endGame(manual = false) {
+    function endGame(stop = false) {
         clearInterval(gameInterval);
         clearInterval(timerInterval);
         circle.style.display = 'none';
         startButton.textContent = "Start Game"; // Volver a poner el texto en "Start Game"
         startButton.disabled = false;
 
-        if (!manual) { // Si el juego terminó automáticamente
-            alert(`Game Over! Your final score is ${score}`);
+        if (!stop) { // Si el juego terminó automáticamente
+            scoreDisplay.textContent = `Game Over! Your final score is ${score}`;
         }
     }
 
