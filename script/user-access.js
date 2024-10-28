@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Función mostrar mensaje de registro temporal
+    // Función mostrar mensaje temporal de registro exitoso
     function showSuccessRegister() {
         const message = document.createElement('div');
         message.classList.add('success-message');

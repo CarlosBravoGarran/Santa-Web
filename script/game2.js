@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const memoryGrid = document.querySelector('.game2__grid');
     const restartButton = document.querySelector('.game2__restart-button');
 
+
     // Imágenes para el juego
     const images = [
         '🎅', '🎅', '🎄', '🎄', '⛄', '⛄', '🎁', '🎁',
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let firstCard = null;
     let secondCard = null;
     let lockBoard = false;
+    let matchedPairs = 0; // Contador de pares encontrados
 
     // Mezclar las imágenes
     function shuffle(array) {
@@ -71,7 +73,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function disableCards() {
         firstCard.removeEventListener('click', flipCard);
         secondCard.removeEventListener('click', flipCard);
+        matchedPairs++; // Incrementa el contador de pares encontrados
         resetBoard();
+
+        if (matchedPairs === images.length / 2) {
+            setTimeout(() => {
+                showWinMessage();
+                createBoard(); // Reinicia el juego
+            }, 500);
+        }
     }
 
     // Voltear las cartas de nuevo
@@ -84,9 +94,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
+
     // Reiniciar el tablero
     function resetBoard() {
         [firstCard, secondCard, lockBoard] = [null, null, false];
+    }
+
+    // Función mostrar mensaje 
+    function showWinMessage() {
+        const message = document.createElement('div');
+        message.classList.add('win_message');
+        message.textContent = '!HAS GANADO¡';
+        document.body.appendChild(message);
+
+        setTimeout(() => {
+            message.remove();
+        }, 1500);
     }
 
     // Cambiar al juego 2
@@ -98,7 +121,8 @@ document.addEventListener('DOMContentLoaded', function() {
         createBoard();
     });
 
+
     // Reiniciar el juego
-    restartButton.addEventListener('click', createBoard);
+    restartButton.addEventListener('click', createBoard);    
 
 });

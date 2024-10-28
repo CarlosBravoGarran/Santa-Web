@@ -16,7 +16,7 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: sans-serif, 'Merienda';
+    font-family: sans-serif;
     background-color: var(--color-background);
     color: #333;
     box-sizing: border-box;
