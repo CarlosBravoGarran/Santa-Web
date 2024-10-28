@@ -119,18 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
         [firstCard, secondCard, lockBoard] = [null, null, false];
     }
 
-    // Función mostrar mensaje 
-    function showWinMessage() {
-        const message = document.createElement('div');
-        message.classList.add('win_message');
-        message.textContent = '!HAS GANADO¡';
-        document.body.appendChild(message);
-
-        setTimeout(() => {
-            message.remove();
-        }, 1500);
-    }
-
     // Cambiar al juego 2
     game2Button.addEventListener('click', function() {
         gameImage.style.display = 'none';

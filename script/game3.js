@@ -11,5 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
         game1Container.style.display = 'none';
         game2Container.style.display = 'none';
         game3Image.style.display = 'block';
+        alert('Game 3 is coming soon!');
     })
 })
