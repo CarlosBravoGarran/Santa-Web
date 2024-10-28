@@ -121,7 +121,6 @@ document.addEventListener('DOMContentLoaded', function() {
         createBoard();
     });
 
-
     // Reiniciar el juego
     restartButton.addEventListener('click', createBoard);    
 

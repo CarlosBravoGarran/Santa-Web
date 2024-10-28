@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
     // Funciones utilitarias
     function getCookie(name) {
@@ -10,15 +9,14 @@ document.addEventListener('DOMContentLoaded', function () {
         return null;
     }
     
-
     function setCookie(name, value, days) {
         const date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         const expires = "expires=" + date.toUTCString();
-        document.cookie = name + "=" + JSON.stringify(value) + ";" + expires + ";path=/";
+        document.cookie = name + "=" + JSON.stringify(value) + "; " + expires + "; path=/";
     }
 
-    // Función mostrar mensaje de registro temporal
+    // Función para mostrar mensaje de éxito temporal
     function showSuccessSend() {
         const message = document.createElement('div');
         message.classList.add('success-message');
@@ -30,10 +28,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1500);
     }
 
-    // Verificar la sesión y enviar carta
+    // Escuchar el botón de envío y verificar la validez del formulario
     document.querySelector('.send_letter').addEventListener('click', function (event) {
-        event.preventDefault(); 
-        console.log("Botón de enviar carta presionado");
+        const form = document.querySelector('.letter_form');
+
+        if (!form.checkValidity()) {
+            // Si el formulario no es válido, detén el envío y muestra los mensajes de error
+            form.reportValidity();
+            return;
+        }
+
+        event.preventDefault(); // Detener el envío por defecto después de validación
+        console.log("Formulario enviado y validado");
 
         // Obtener datos de la sesión
         const session = getCookie('userSession');
@@ -50,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const countryInput = document.getElementById('letter_country').value;
         const messageInput = document.getElementById('letter_message').value;
 
-        console.log("Datos del formulario obtenidos:");
+        console.log("Datos del formulario obtenidos");
 
         // Verificar que el correo coincida con el registrado
         if (emailInput !== session.email) {
@@ -63,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let userLetters = getCookie(userLettersKey) || [];
         console.log("Cartas anteriores obtenidas:", userLetters);
 
-        // Crear un nuevo objeto de carta y añadrilo al array de cartas
+        // Crear un nuevo objeto de carta y añadirlo al array de cartas
         const newLetter = {
             name: nameInput,
             email: emailInput,
@@ -80,6 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Confirmación de envío
         showSuccessSend();
-        document.querySelector('.letter_form').reset(); // Limpiar el formulario
+        form.reset(); // Limpiar el formulario
     });
 });
