@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // Imágenes para el juego
-    const images = [
+    let images = [
         '🎅', '🎅', '🎄', '🎄', '⛄', '⛄', '🎁', '🎁',
         '🦌', '🦌', '🎉', '🎉', '🍪', '🍪', '🌟', '🌟',
         '🔔', '🔔', '❄️', '❄️'
@@ -48,6 +48,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Crear el tablero de juego ganador
+    function winBoard() {
+        memoryGrid.innerHTML = '';
+        let images = [
+            '', '', '', '', '', '', 'Y', 'O',
+            'U', '', '', 'W', 'I', 'N', '', '',
+            '', '', '', ''
+        ];
+        images.forEach(symbol => {
+            const card = document.createElement('div');
+            card.classList.add('memory-card', 'flip');
+            card.innerHTML = `
+                <div class="memory-card_inner">
+                    <div class="memory-card_front"></div>
+                    <div class="memory-card_back">${symbol}</div>
+                </div>
+            `;
+            memoryGrid.appendChild(card);
+        });
+    }
+
     // Voltear la carta
     function flipCard() {
         if (lockBoard) return;
@@ -78,8 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (matchedPairs === images.length / 2) {
             setTimeout(() => {
-                showWinMessage();
-                createBoard(); // Reinicia el juego
+                winBoard(); // Muestra el mensaje de ganador
             }, 500);
         }
     }
@@ -93,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
             resetBoard();
         }, 1000);
     }
-
 
     // Reiniciar el tablero
     function resetBoard() {
