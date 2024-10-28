@@ -1,11 +1,10 @@
 
-const finalDate = new Date("December 24, 2024 23:59:00").getTime();    // Definir fecha y hora final
+const finalDate = new Date("December 24, 2024 23:59:00").getTime(); // Definir fecha y hora final
 
-// Función para actualizar el contador cada segundo
-const countdown = setInterval(function() {
-
-  const actualDate = new Date().getTime();     // Obtener fecha y hora actual
-  const timeLeft = finalDate - actualDate;    // Calcular diferencia entre fecha final y actual
+// Función para actualizar el contador
+function updateCountdown() {
+  const actualDate = new Date().getTime(); // Obtener fecha y hora actual
+  const timeLeft = finalDate - actualDate; // Calcular diferencia entre fecha final y actual
 
   // Calcular días, horas, minutos y segundos
   const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
@@ -14,12 +13,17 @@ const countdown = setInterval(function() {
   const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
   // Mostrar el resultado en el elemento "countdown"
-  document.getElementById("countdown").innerHTML = days + " días " + hours + " h "
-  + minutes + " min " + seconds + " seg";
+  document.getElementById("countdown").innerHTML = `${days} días ${hours} h ${minutes} min ${seconds} seg`;
 
   // Si la cuenta regresiva termina, mostrar un mensaje
   if (timeLeft < 0) {
     clearInterval(countdown);
     document.getElementById("countdown").innerHTML = "¡Ha llegado el día!";
   }
-}, 1000);
+}
+
+// Ejecutar la función inmediatamente para evitar el retraso inicial
+updateCountdown();
+
+// Configurar el intervalo para actualizar cada segundo
+const countdown = setInterval(updateCountdown, 1000);
