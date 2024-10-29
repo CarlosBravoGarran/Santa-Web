@@ -1,32 +1,23 @@
 
-// Función para obtener una cookie
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) {
-        return JSON.parse(parts.pop().split(';').shift());
-    }
-    return null;
+// Función para establecer datos en localStorage
+function setLocalStorage(name, value) {
+    localStorage.setItem(name, JSON.stringify(value));
 }
 
-
-// Función para establecer una cookie
-function setCookie(name, value, days) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + JSON.stringify(value) + ";" + expires + ";path=/";
+// Función para obtener datos desde localStorage
+function getLocalStorage(name) {
+    const value = localStorage.getItem(name);
+    return value ? JSON.parse(value) : null;
 }
 
-// Función para eliminar una cookie
-function deleteCookie(name) {
-    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+// Función para "expirar" o eliminar datos de localStorage
+function clearLocalStorageItem(name) {
+    localStorage.removeItem(name);
 }
-
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    deleteCookie('userSession'); // Eliminar la cookie de sesión al cargar la página
+    clearLocalStorageItem('userSession'); // Eliminar la entrada de sesión al cargar la página
 
 
     // Elementos para el pop-up de perfil
@@ -44,13 +35,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Mostrar el pop-up de perfil y cargar datos al hacer clic en el botón "Mi Perfil"
     myProfileButton.addEventListener('click', function () {
-        const session = getCookie('userSession');
+        const session = getLocalStorage('userSession');
         if (!session || !session.active) {
             alert("No hay ninguna sesión activa.");
             return;
         }
 
-        const userData = getCookie(`user_${session.username}`);
+        const userData = getLocalStorage(`user_${session.username}`);
         if (userData) {
             usernameDisplay.textContent = userData.username || '';
             emailDisplay.textContent = userData.email || '';
@@ -71,15 +62,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Guardar los cambios al hacer clic en "Guardar"
     saveProfileButton.addEventListener('click', function () {
-        const session = getCookie('userSession');
+        const session = getLocalStorage('userSession');
         if (!session || !session.active) {
             alert("No hay ninguna sesión activa para guardar cambios.");
             return;
         }
 
-        // Obtener los datos actuales de la cookie del usuario
+        // Obtener los datos actuales del registro del usuario
         const oldUsername = session.username;
-        const userData = getCookie(`user_${oldUsername}`) || {};
+        const userData = getLocalStorage(`user_${oldUsername}`) || {};
 
         // Actualizar solo los campos editados
         const newUsername = usernameDisplay.textContent;
@@ -88,30 +79,30 @@ document.addEventListener('DOMContentLoaded', function () {
         userData.city = cityDisplay.textContent;
         userData.country = countryDisplay.textContent;
 
-        // Guardar la cookie de `user_<username>` actualizada y borrar la anterior
-        setCookie(`user_${newUsername}`, userData, 7);
-        deleteCookie(`user_${oldUsername}`);
+        // Guardar el registro de `user_<username>` actualizado y borrar el anterior
+        setLocalStorage(`user_${newUsername}`, userData);
+        clearLocalStorageItem(`user_${oldUsername}`);
 
         // Si el nombre de usuario ha cambiado, actualizar `registered_users`, `userSession` y user_<username>_letters
         if (newUsername !== oldUsername) {
-            deleteCookie(`user_${oldUsername}`);
+            clearLocalStorageItem(`user_${oldUsername}`);
 
             // Actualizar `registered_users`
-            let registeredUsers = getCookie('registered_users') || [];
+            let registeredUsers = getLocalStorage('registered_users') || [];
             const index = registeredUsers.indexOf(oldUsername);
             if (index !== -1) {
                 registeredUsers[index] = newUsername;
-                setCookie('registered_users', registeredUsers, 7);
+                setLocalStorage('registered_users', registeredUsers);
             }
 
-            // Actualizar la cookie `userSession` con el nuevo nombre de usuario
+            // Actualizar el local storage de `userSession` con el nuevo nombre de usuario
             session.username = newUsername;
-            setCookie('userSession', session, 7);
+            setLocalStorage('userSession', session);
 
-            // Actualizar la cookie `user_<username>_letters`
-            const letters = getCookie(`user_${oldUsername}_letters`) || [];
-            setCookie(`user_${newUsername}_letters`, letters, 7);
-            deleteCookie(`user_${oldUsername}_letters`);
+            // Actualizar `user_<username>_letters`
+            const letters = getLocalStorage(`user_${oldUsername}_letters`) || [];
+            setLocalStorage(`user_${newUsername}_letters`, letters);
+            clearLocalStorageItem(`user_${oldUsername}_letters`);
         }
 
         // Restaurar los estilos de los campos y quitar la edición

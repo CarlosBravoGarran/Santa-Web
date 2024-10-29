@@ -6,31 +6,24 @@ document.addEventListener('DOMContentLoaded', function () {
     let dragSourceIndex = null; // Variable para almacenar el índice de la carta que se está arrastrando
     let dropTargetIndex = null; // Índice del destino de la carta arrastrada
 
-    // Función para obtener los datos de la cookie
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) {
-            return JSON.parse(parts.pop().split(';').shift());
-        }
-        return null;
+    // Función para establecer datos en localStorage
+    function setLocalStorage(name, value) {
+        localStorage.setItem(name, JSON.stringify(value));
     }
 
-    // Función para establecer la cookie
-    function setCookie(name, value, days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        const expires = "expires=" + date.toUTCString();
-        document.cookie = name + "=" + JSON.stringify(value) + ";" + expires + ";path=/";
+    // Función para obtener datos desde localStorage
+    function getLocalStorage(name) {
+        const value = localStorage.getItem(name);
+        return value ? JSON.parse(value) : null;
     }
 
     // Función para mostrar las cartas del usuario en el pop-up
     function displayLetters() {
         const noLettersMessage = document.querySelector('.no-letters'); // Mensaje "No hay cartas"
-        const session = getCookie('userSession');
+        const session = getLocalStorage('userSession');
 
         const userLettersKey = `user_${session.username}_letters`;
-        const userLetters = getCookie(userLettersKey) || [];
+        const userLetters = getLocalStorage(userLettersKey) || [];
 
         lettersContainer.innerHTML = ''; // Limpiar el contenido anterior
 
@@ -134,11 +127,11 @@ document.addEventListener('DOMContentLoaded', function () {
         lettersContainer.classList.remove('not-dragged_letter');
     }
 
-    // Función para insertar carta en una nueva posición y actualizar la cookie
+    // Función para insertar carta en una nueva posición y actualizar el storage
     function insertLetter(fromIndex, toIndex) {
-        const session = getCookie('userSession');
+        const session = getLocalStorage('userSession');
         const userLettersKey = `user_${session.username}_letters`;
-        let userLetters = getCookie(userLettersKey) || [];
+        let userLetters = getLocalStorage(userLettersKey) || [];
 
         // No hacer nada si la carta se intenta colocar en su misma posición o adyacente sin movimiento
         if (fromIndex === toIndex || fromIndex + 1 === toIndex || fromIndex - 1 === toIndex) {
@@ -149,20 +142,20 @@ document.addEventListener('DOMContentLoaded', function () {
         const [movedLetter] = userLetters.splice(fromIndex, 1);
         userLetters.splice(toIndex, 0, movedLetter);
 
-        // Guardar el nuevo orden en la cookie y actualizar display
-        setCookie(userLettersKey, userLetters, 7);
+        // Guardar el nuevo orden en el storage y actualizar display
+        setLocalStorage(userLettersKey, userLetters, 7);
         displayLetters();
     }
 
-    // Eliminar una carta y actualizar la cookie
+    // Eliminar una carta y actualizar el storage
     function deleteLetter(index) {
-        const session = getCookie('userSession');
+        const session = getLocalStorage('userSession');
         const userLettersKey = `user_${session.username}_letters`;
-        let userLetters = getCookie(userLettersKey) || [];
+        let userLetters = getLocalStorage(userLettersKey) || [];
 
-        // Eliminar la carta del array y actualizar la cookie
+        // Eliminar la carta del array y actualizar el storage
         userLetters.splice(index, 1);
-        setCookie(userLettersKey, userLetters, 7);
+        setLocalStorage(userLettersKey, userLetters);
 
         displayLetters();
     }

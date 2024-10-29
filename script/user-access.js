@@ -68,23 +68,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1500);
     }
 
-    // Función para establecer una cookie
-    function setCookie(name, value, days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        const expires = "expires=" + date.toUTCString();
-        document.cookie = name + "=" + JSON.stringify(value) + ";" + expires + ";path=/";
+    // Función para establecer datos en localStorage
+    function setLocalStorage(name, value) {
+        localStorage.setItem(name, JSON.stringify(value));
     }
 
-    // Función para obtener una cookie
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) {
-            return JSON.parse(parts.pop().split(';').shift());
-        }
-        return null;
+    // Función para obtener datos desde localStorage
+    function getLocalStorage(name) {
+        const value = localStorage.getItem(name);
+        return value ? JSON.parse(value) : null;
     }
+
 
     // Actualizar campos cuando cambie el número de hijos
     childrenField.addEventListener('input', function () {
@@ -159,16 +153,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const userData = { username, password, email, city, country, gender, children: childrenList };
 
         // Obtener y actualizar la lista de usuarios registrados
-        let registeredUsers = getCookie('registered_users') || [];
+        let registeredUsers = getLocalStorage('registered_users') || [];
         if (registeredUsers.includes(username)) {
             alert('Este usuario ya está registrado.');
             return;
         }
         registeredUsers.push(username);
-        setCookie('registered_users', registeredUsers, 7); // Guardar lista de usuarios
+        setLocalStorage('registered_users', registeredUsers); // Guardar lista de usuarios
 
         // Guardar datos del usuario individual
-        setCookie(`user_${username}`, userData, 1); // Guardar valores en una cookie
+        setLocalStorage(`user_${username}`, userData); // Guardar valores del usuario
         document.querySelector('.register').style.display = 'none';
         showSuccessRegister();
         document.querySelector('.register__form').reset();

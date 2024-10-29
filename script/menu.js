@@ -1,21 +1,18 @@
 
-// Función para obtener una cookie
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) {
-        return JSON.parse(parts.pop().split(';').shift());
-    }
-    return null;
+// Función para obtener datos desde localStorage
+function getLocalStorage(name) {
+    const value = localStorage.getItem(name);
+    return value ? JSON.parse(value) : null;
 }
 
+// Función para establecer datos en localStorage
+function setLocalStorage(name, value) {
+    localStorage.setItem(name, JSON.stringify(value));
+}
 
-// Función para establecer una cookie
-function setCookie(name, value, days) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + JSON.stringify(value) + ";" + expires + ";path=/";
+// Función para "expirar" o eliminar datos de localStorage
+function clearLocalStorageItem(name) {
+    localStorage.removeItem(name);
 }
 
 // Función para mostrar mensaje de inicio de sesión exitoso
@@ -33,7 +30,7 @@ function showSuccessLogin() {
 // Función para iniciar sesión
 function startSession(username, email, city, country) {
     const sessionData = { username, email, city, country, active: true };
-    setCookie('userSession', sessionData, 1);
+    setLocalStorage('userSession', sessionData);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -53,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const password = document.getElementById('login_password').value;
 
         // Obtener la lista de usuarios registrados
-        const registeredUsers = getCookie('registered_users') || [];
+        const registeredUsers = getLocalStorage('registered_users') || [];
 
         // Verificar si el usuario está registrado
         if (!registeredUsers.includes(username)) {
@@ -61,8 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Obtener los datos del usuario desde la cookie 'user_<username>'
-        const userData = getCookie(`user_${username}`);
+        // Obtener los datos del usuario desde el local storage 'user_<username>'
+        const userData = getLocalStorage(`user_${username}`);
 
         // Verificar que el usuario y la contraseña sean correctos
         if (userData && userData.password === password) {
@@ -93,8 +90,8 @@ document.addEventListener('DOMContentLoaded', function () {
             loginButtons.style.display = 'flex';                // Volver a mostrar los botones de login y registro
             profileMenu.classList.add('menu__hidden');          // Ocultar menú
 
-            // Eliminar la cookie de sesión para cerrar la sesión
-            setCookie('userSession', '', -1); // Expira la cookie para cerrar la sesión
+            clearLocalStorageItem('userSession'); // Cerrar la sesión al eliminar la entrada en localStorage
+
         }
     });
     

@@ -1,19 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Funciones utilitarias
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) {
-            return JSON.parse(parts.pop().split(';').shift());
-        }
-        return null;
-    }
     
-    function setCookie(name, value, days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        const expires = "expires=" + date.toUTCString();
-        document.cookie = name + "=" + JSON.stringify(value) + "; " + expires + "; path=/";
+    // Función para establecer datos en localStorage
+    function setLocalStorage(name, value) {
+        localStorage.setItem(name, JSON.stringify(value));
+    }
+
+    // Función para obtener datos desde localStorage
+    function getLocalStorage(name) {
+        const value = localStorage.getItem(name);
+        return value ? JSON.parse(value) : null;
     }
 
     // Función para mostrar mensaje de éxito temporal
@@ -42,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("Formulario enviado y validado");
 
         // Obtener datos de la sesión
-        const session = getCookie('userSession');
+        const session = getLocalStorage('userSession');
         if (!session || !session.active) {
             alert("Debe iniciar sesión para enviar una carta.");
             console.log("Sesión no iniciada o inactiva.");
@@ -66,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Obtener cartas anteriores del usuario o inicializar un array vacío
         const userLettersKey = `user_${session.username}_letters`;
-        let userLetters = getCookie(userLettersKey) || [];
+        let userLetters = getLocalStorage(userLettersKey) || [];
         console.log("Cartas anteriores obtenidas:", userLetters);
 
         // Crear un nuevo objeto de carta y añadirlo al array de cartas
@@ -80,10 +75,9 @@ document.addEventListener('DOMContentLoaded', function () {
         };
         userLetters.push(newLetter);
 
-        // Guardar el array actualizado en la cookie
-        setCookie(userLettersKey, userLetters, 7);
-        console.log("Nueva carta guardada en cookie:", newLetter);
-
+        // Guardar el array actualizado en el storage
+        setLocalStorage(userLettersKey, userLetters);
+        
         // Confirmación de envío
         showSuccessSend();
         form.reset(); // Limpiar el formulario
