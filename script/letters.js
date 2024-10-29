@@ -61,8 +61,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 card.addEventListener('dragend', handleDragEnd);
 
                 // Evento para eliminar carta al hacer clic en "x"
-                card.querySelector('.letters-popup__x').addEventListener('click', function (e) {
-                    e.stopPropagation();
+                card.querySelector('.letters-popup__x').addEventListener('click', function (ev) {
+                    ev.stopPropagation();
                     if (confirm('¿Está seguro de que desea eliminar esta carta?')) {
                         deleteLetter(index);
                     }
@@ -76,41 +76,50 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Funciones de Drag and Drop
-    function handleDragStart(e) {
+    function handleDragStart(ev) {
         dragSourceIndex = +this.getAttribute('data-index');
-        e.dataTransfer.effectAllowed = 'move';
+        ev.dataTransfer.effectAllowed = 'move';
 
         this.classList.add('dragged_letter');                  // Clase para resaltar la carta
         lettersContainer.classList.add('not-dragged_letter');  // Oscurecer el resto de cartas
     }
 
-    function handleDragOver(e) {
-        e.preventDefault();
-        e.dataTransfer.dropEffect = 'move';
+    // Limpia los estilos de borde de todas las cartas
+    function removeBorders() {
+        document.querySelectorAll('.letters-popup__card').forEach(card => {
+            card.style.borderLeft = "none";
+            card.style.borderRight = "none";
+        });
+    }
 
-        const target = e.currentTarget;
+    function handleDragOver(ev) {
+        ev.preventDefault();
+        ev.dataTransfer.dropEffect = 'move';
+
+        const target = ev.currentTarget;
         const bounding = target.getBoundingClientRect();
-        const offset = e.clientX - bounding.left;
+        const offset = ev.clientX - bounding.left;
+
+        removeBorders(); // Limpiar los estilos de borde de todas las cartas
 
         // Determinar si el usuario está arrastrando hacia el lado izquierdo o derecho de la carta
         if (offset < bounding.width / 2) {
             target.style.borderLeft = "3px solid #f00";
             target.style.borderRight = "none";
-            dropTargetIndex = +target.getAttribute('data-index');
+            dropTargetIndex = target.getAttribute('data-index');
         } else {
             target.style.borderRight = "3px solid #f00";
             target.style.borderLeft = "none";
-            dropTargetIndex = +target.getAttribute('data-index') + 1;
+            dropTargetIndex = target.getAttribute('data-index');
         }
     }
 
-    function handleDrop(e) {
-        e.stopPropagation();
+    function handleDrop(ev) {
+        ev.stopPropagation();
 
         if (dragSourceIndex !== dropTargetIndex) {
             insertLetter(dragSourceIndex, dropTargetIndex); // Insertar carta en el nuevo índice
         }
-
         return false;
     }
 
@@ -130,6 +139,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const session = getCookie('userSession');
         const userLettersKey = `user_${session.username}_letters`;
         let userLetters = getCookie(userLettersKey) || [];
+
+        // No hacer nada si la carta se intenta colocar en su misma posición o adyacente sin movimiento
+        if (fromIndex === toIndex || fromIndex + 1 === toIndex || fromIndex - 1 === toIndex) {
+            return;
+        }
 
         // Extraer la carta arrastrada e iinsertarla en la nueva posición
         const [movedLetter] = userLetters.splice(fromIndex, 1);
@@ -163,8 +177,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Evento para cerrar el pop-up al hacer clic fuera del él
-    window.addEventListener('click', function (e) {
-        if (e.target === lettersPopup) {
+    window.addEventListener('click', function (ev) {
+        if (ev.target === lettersPopup) {
             lettersPopup.style.display = 'none';
             lettersContainer.innerHTML = ''; // Limpiar el contenedor
         }
