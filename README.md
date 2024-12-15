@@ -9,6 +9,8 @@
 - **Juegos Interactivos**: Participa en varios juegos temáticos de Navidad para ganar premios y disfrutar de la temporada festiva.
 - **Registro y Gestión de Perfiles de Usuario**: Los usuarios pueden registrarse, guardar cartas, y seguir su actividad dentro de la aplicación.
 
+![Demo-GIF](docs/Santa-Web.gif)
+
 ## Tecnologías Utilizadas
 - HTML5
 - CSS3
